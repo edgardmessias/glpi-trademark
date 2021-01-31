@@ -13,11 +13,7 @@ if (!isset($_GET['_'])) {
    include_once GLPI_ROOT . "/inc/db.function.php";
    include_once GLPI_ROOT . '/inc/config.php';
 
-   $timestamp = $GLPI_CACHE->get('trademark_timestamp');
-   if (!$timestamp) {
-      $timestamp = time();
-      $GLPI_CACHE->set('trademark_timestamp', $timestamp);
-   }
+   $timestamp = PluginTrademarkToolbox::getTimestamp();
 
    // Disable cache and redirect to cached URL
    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
@@ -41,10 +37,10 @@ $css = "";
 $picture = PluginTrademarkConfig::getConfig("{$name}_background_picture", '');
 if ($picture) {
    $css .= "#firstboxlogin, #text-login, #logo_login {";
-   $css .= "  background: none;";
+   $css .= "  background-color: transparent;";
    $css .= "}";
    $css .= "html {";
-   $css .= " height: 100%;";
+   $css .= "  height: 100%;";
    $css .= "}";
    $css .= "body {";
    $css .= "  background-size: cover;";
@@ -59,9 +55,9 @@ $css_custom = PluginTrademarkConfig::getConfig("{$name}_css_custom", '');
 
 $css_custom = html_entity_decode($css_custom);
 
-if ($css_type === 'scss' && $css_custom) {
+if ($css_type === 'scss' && $css_custom && PluginTrademarkScss::hasScssSuport()) {
    try {
-      $css .= PluginTrademarkConfig::compileScss($css_custom);
+      $css .= PluginTrademarkScss::compileScss($css_custom);
    } catch (\Throwable $th) {
       Toolbox::logWarning($th->getMessage());
    }

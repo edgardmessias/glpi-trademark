@@ -14,11 +14,7 @@ if (!isset($_GET['_'])) {
    include_once GLPI_ROOT . "/inc/db.function.php";
    include_once GLPI_ROOT . '/inc/config.php';
 
-   $timestamp = $GLPI_CACHE->get('trademark_timestamp');
-   if (!$timestamp) {
-      $timestamp = time();
-      $GLPI_CACHE->set('trademark_timestamp', $timestamp);
-   }
+   $timestamp = PluginTrademarkToolbox::getTimestamp();
 
    // Disable cache and redirect to cached URL
    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");

@@ -10,7 +10,6 @@ class PluginTrademarkFileVersion {
    }
 
    public function __toString() {
-
       // First call is inside of "file_exists", so it is necessary to return a valid file
       if (!$this->_initialized) {
          $this->_initialized = true;
@@ -19,13 +18,7 @@ class PluginTrademarkFileVersion {
 
       // Second call is inside concatenation
 
-      global $GLPI_CACHE;
-
-      $timestamp = $GLPI_CACHE->get('trademark_timestamp');
-      if (!$timestamp) {
-         $timestamp = time();
-         $GLPI_CACHE->set('trademark_timestamp', $timestamp);
-      }
+      $timestamp = PluginTrademarkToolbox::getTimestamp();
 
       return $this->_file . "?_=" . $timestamp;
    }

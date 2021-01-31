@@ -2,13 +2,7 @@
 
 function plugin_trademark_display_login() {
 
-   global $GLPI_CACHE;
-
-   $timestamp = $GLPI_CACHE->get('trademark_timestamp');
-   if (!$timestamp) {
-      $timestamp = time();
-      $GLPI_CACHE->set('trademark_timestamp', $timestamp);
-   }
+   $timestamp = PluginTrademarkToolbox::getTimestamp();
 
    echo Html::css("/plugins/trademark/front/login.css.php?_=$timestamp", [
       'version' => PLUGIN_TRADEMARK_VERSION,

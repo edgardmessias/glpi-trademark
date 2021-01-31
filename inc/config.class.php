@@ -21,37 +21,6 @@ class PluginTrademarkConfig extends CommonDBTM {
       return $defaultValue;
    }
 
-   static function compileScss($content) {
-      global $GLPI_CACHE;
-
-      $classNamespace = 'ScssPhp\ScssPhp';
-      $compiler = "$classNamespace\Compiler";
-
-      if (!class_exists($compiler)) {
-         $classNamespace = 'Leafo\ScssPhp';
-      }
-
-      $compiler = "$classNamespace\Compiler";
-      $formatter = "$classNamespace\Formatter\Crunched";
-
-      $scss = new $compiler();
-      $scss->setFormatter($formatter);
-      $scss->addImportPath(GLPI_ROOT);
-
-      $ckey = md5($content);
-
-      if ($GLPI_CACHE->has($ckey) && !isset($_GET['reload']) && !isset($_GET['nocache'])) {
-         $css = $GLPI_CACHE->get($ckey);
-      } else {
-         $css = $scss->compile($content);
-         if (!isset($_GET['nocache'])) {
-            $GLPI_CACHE->set($ckey, $css);
-         }
-      }
-
-      return $css;
-   }
-
    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
       switch (get_class($item)) {
          case 'Config':
@@ -88,7 +57,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          $picResizedPath = GLPI_TMP_DIR . '/resized_' . $picName;
 
          if ($width || $height) {
-            if (Toolbox::resizePicture($picPath, $picResizedPath, $width, $height, 0, 0, 0, 0, $max_size)) {
+            if (PluginTrademarkToolbox::resizePicture($picPath, $picResizedPath, $width, $height, 0, 0, 0, 0, $max_size)) {
                $picPath = $picResizedPath;
             }
          }
@@ -121,7 +90,7 @@ class PluginTrademarkConfig extends CommonDBTM {
       $type = "{$name}_css_type";
 
       if (!isset($input[$type])) {
-         $input[$type] = 'scss';
+         $input[$type] = 'css';
       }
 
       if (isset($input[$fullName])) {
@@ -129,9 +98,9 @@ class PluginTrademarkConfig extends CommonDBTM {
          $input[$fullName] = preg_replace('/\\\\r\\\\n/', "\n", $input[$fullName]);
          $input[$fullName] = preg_replace('/\\\\n/', "\n", $input[$fullName]);
 
-         if ($input[$type] === 'scss') {
+         if ($input[$type] === 'scss' && PluginTrademarkScss::hasScssSuport()) {
             try {
-               self::compileScss($input[$fullName]);
+               PluginTrademarkScss::compileScss($input[$fullName]);
             } catch (\Throwable $th) {
                $message = sprintf(t_trademark('Unable to compile the SCSS (%1$s). Message: '), $label);
                Session::addMessageAfterRedirect($message . $th->getMessage(), true, ERROR);
@@ -157,13 +126,19 @@ class PluginTrademarkConfig extends CommonDBTM {
 
       $input['timestamp'] = time();
 
-      global $GLPI_CACHE;
-      $GLPI_CACHE->set('trademark_timestamp', $input['timestamp']);
+      PluginTrademarkToolbox::setTimestamp($input['timestamp']);
 
       return $input;
    }
 
    function getEmpty() {
+
+      $defaultCss = 'css';
+
+      if (PluginTrademarkScss::hasScssSuport()) {
+         $defaultCss = 'scss';
+      }
+
       $this->fields = [
          'favicon_picture' => '',
          'page_title' => '',
@@ -171,12 +146,12 @@ class PluginTrademarkConfig extends CommonDBTM {
          'login_picture_max_width' => '240px',
          'login_picture_max_height' => '130px',
          'login_css_custom' => '',
-         'login_css_type' => 'scss',
+         'login_css_type' => $defaultCss,
          'internal_picture' => '',
          'internal_picture_width' => '100px',
          'internal_picture_height' => '55px',
          'internal_css_custom' => '',
-         'internal_css_type' => 'scss',
+         'internal_css_type' => $defaultCss,
       ];
    }
 
@@ -225,11 +200,16 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo t_trademark('CSS Type') . ':';
       echo "</td>";
       echo "<td colspan='3'>";
-      Dropdown::showFromArray($type, [
+
+      $css_type = [
          'off' => __('Disabled'),
          'css' => 'CSS',
-         'scss' => 'SCSS',
-      ], ['value' => $this->fields[$type]]);
+      ];
+
+      if (PluginTrademarkScss::hasScssSuport()) {
+         $css_type['scss'] = 'SCSS';
+      }
+      Dropdown::showFromArray($type, $css_type, ['value' => $this->fields[$type]]);
       echo "</td>";
       echo "</tr>";
       echo "<tr class='tab_bg_1'>";
