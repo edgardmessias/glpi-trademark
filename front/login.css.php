@@ -35,7 +35,7 @@ if (!isset($_GET['_'])) {
 
 include('../../../inc/includes.php');
 
-$name = 'internal';
+$name = 'login';
 $css = "";
 
 $picture = PluginTrademarkConfig::getConfig("{$name}_background_picture", '');
