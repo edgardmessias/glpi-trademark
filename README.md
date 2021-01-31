@@ -1,9 +1,9 @@
 # Trademark for GLPI >= 9.5
 
-![Lint](https://github.com/edgardmessias/glpi-trademark/workflows/Lint/badge.svg)
-[![CodeFactor](https://www.codefactor.io/repository/github/edgardmessias/glpi-trademark/badge)](https://www.codefactor.io/repository/github/edgardmessias/glpi-trademark)
-[![Total Downloads](https://img.shields.io/github/downloads/edgardmessias/glpi-trademark/total.svg)](https://github.com/edgardmessias/glpi-trademark/releases)
-[![Current Release](https://img.shields.io/github/release/edgardmessias/glpi-trademark.svg)](https://github.com/edgardmessias/glpi-trademark/releases/latest)
+![Lint](https://github.com/phamorais/trademark/workflows/Lint/badge.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/phamorais/trademark/badge)](https://www.codefactor.io/repository/github/phamorais/trademark)
+[![Total Downloads](https://img.shields.io/github/downloads/phamorais/trademark/total.svg)](https://github.com/phamorais/trademark/releases)
+[![Current Release](https://img.shields.io/github/release/phamorais/trademark.svg)](https://github.com/phamorais/trademark/releases/latest)
 
 Allow customization of logos, background and custom CSSs
 

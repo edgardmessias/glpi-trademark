@@ -1,7 +1,7 @@
 {
     "name": "edgardmessias/glpi-trademark",
     "description": "Fix Mail Collector for GLPI",
-    "license": "MIT",
+    "license": "GPL v2+",
     "require-dev": {
         "consolidation/robo": "^2.2",
         "glpi-project/coding-standard": "^0.8",
