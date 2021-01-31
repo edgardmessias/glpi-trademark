@@ -9,9 +9,12 @@ if (isset($_GET['path'])) {
    Html::displayErrorAndDie(__('Invalid filename'), true);
 }
 
-$path = GLPI_PLUGIN_DOC_DIR . "/trademark/" . $path;
+$fullPath = GLPI_PLUGIN_DOC_DIR . "/trademark/" . $path;
 
-if (!file_exists($path)) {
+if (!file_exists($fullPath)) {
    Html::displayErrorAndDie(__('File not found'), true); // Not found
 }
-Toolbox::sendFile($path, "picture.png", null, true);
+
+$name = preg_replace('/[^\w\-.]+/', '', $path);
+
+Toolbox::sendFile($fullPath, $name, null, true);
