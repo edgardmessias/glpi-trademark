@@ -1,7 +1,5 @@
 <?php
 
-use atoum\atoum\report\fields\test\travis\start;
-
 class PluginTrademarkConfig extends CommonDBTM {
 
    private static $_cache = null;

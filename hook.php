@@ -28,8 +28,8 @@ function plugin_trademark_display_login() {
    if ($loginPicture) :
       $pictureUrl = PluginTrademarkToolbox::getPictureUrl($loginPicture);
       $css = [
-         'max-width' => PluginTrademarkConfig::getConfig('login_picture_max_width', '100px'),
-         'max-height' => PluginTrademarkConfig::getConfig('login_picture_max_height', '100px'),
+         'max-width' => PluginTrademarkConfig::getConfig('login_picture_max_width', '145px'),
+         'max-height' => PluginTrademarkConfig::getConfig('login_picture_max_height', '80px'),
       ];
       ?>
          var $logo_login = $('#logo_login');
@@ -38,8 +38,11 @@ function plugin_trademark_display_login() {
             $img.css(<?php echo json_encode($css) ?>);
             $img.attr('src', <?php echo json_encode($pictureUrl) ?>);
          } else {
-            console.log('ok');
+            $logo_login.css(<?php echo json_encode($css) ?>);
             $logo_login.css({
+               'background-repeat': 'no-repeat',
+               'background-size': 'contain',
+               'background-position': 'center',
                'background-image': 'url(<?php echo json_encode($pictureUrl) ?>)'
             });
          }
