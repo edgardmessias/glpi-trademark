@@ -14,6 +14,7 @@ class PluginTrademarkToolbox {
          $timestamp = time();
          $GLPI_CACHE->set('trademark_timestamp', $timestamp);
       }
+      return $timestamp;
    }
 
    static public function setTimestamp($timestamp = null) {
