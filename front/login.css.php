@@ -34,7 +34,18 @@ include('../../../inc/includes.php');
 $name = 'login';
 $css = "";
 
+$theme = PluginTrademarkConfig::getConfig("{$name}_theme", '');
+$themeInfo = null;
+if ($theme) {
+   $themeInfo = PluginTrademarkTheme::getThemeInfo($theme);
+}
+
 $picture = PluginTrademarkConfig::getConfig("{$name}_background_picture", '');
+
+if (!$picture && $themeInfo && $themeInfo['login-background']) {
+   $picture = $themeInfo['login-background'] . '&theme=' . $themeInfo['id'];
+}
+
 if ($picture) {
    $css .= "#firstboxlogin, #text-login, #logo_login {";
    $css .= "  background-color: transparent;";
@@ -54,6 +65,10 @@ $css_type = PluginTrademarkConfig::getConfig("{$name}_css_type", 'scss');
 $css_custom = PluginTrademarkConfig::getConfig("{$name}_css_custom", '');
 
 $css_custom = html_entity_decode($css_custom);
+
+if ($css_type === 'scss' && $themeInfo && $themeInfo['login-scss']) {
+   $css_custom = "@import '" . $themeInfo['path'] . '/' . $themeInfo['login-scss'] . "';\n" . $css_custom;
+}
 
 if ($css_type === 'scss' && $css_custom && PluginTrademarkScss::hasScssSuport()) {
    try {

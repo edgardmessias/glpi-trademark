@@ -20,7 +20,8 @@ class PluginTrademarkTheme {
    }
 
    public static function getThemeInfo($dir) {
-      $path = static::getThemeFolder() . '/' . $dir . '/theme.json';
+      $dirPath = static::getThemeFolder() . '/' . $dir;
+      $path = $dirPath . '/theme.json';
       if (!file_exists($path)) {
          return false;
       }
@@ -37,12 +38,19 @@ class PluginTrademarkTheme {
          return false;
       }
       $info['id'] = $dir;
+      $info['path'] = $dirPath;
 
+      if (static::getThemePath($dir, 'login.background.jpg')) {
+         $info['login-background'] = 'login.background.jpg';
+      }
+      if (static::getThemePath($dir, 'login.logo.png')) {
+         $info['login-logo'] = 'login.logo.png';
+      }
       if (static::getThemePath($dir, 'login.preview.jpg')) {
          $info['login-preview'] = 'login.preview.jpg';
       }
-      if (static::getThemePath($dir, 'login.background.jpg')) {
-         $info['login-background'] = 'login.background.jpg';
+      if (static::getThemePath($dir, 'login.scss')) {
+         $info['login-scss'] = 'login.scss';
       }
 
       return $info;

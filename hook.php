@@ -18,7 +18,17 @@ function plugin_trademark_display_login() {
       $('#display-login').appendTo($box);
    <?php
 
+   $theme = PluginTrademarkConfig::getConfig("login_theme", '');
+   $themeInfo = null;
+   if ($theme) {
+      $themeInfo = PluginTrademarkTheme::getThemeInfo($theme);
+   }
+
    $loginPicture = PluginTrademarkConfig::getConfig('login_picture');
+
+   if (!$loginPicture && $themeInfo && $themeInfo['login-background']) {
+      $loginPicture = $themeInfo['login-logo'] . '&theme=' . $themeInfo['id'];
+   }
    if ($loginPicture) :
       $pictureUrl = PluginTrademarkToolbox::getPictureUrl($loginPicture);
       $css = [
