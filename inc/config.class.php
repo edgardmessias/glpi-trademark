@@ -221,35 +221,30 @@ class PluginTrademarkConfig extends CommonDBTM {
          Html::parseAttributes([
             'id' => $fullName . '_' . $rand,
             'name' => $fullName,
+            'class' => 'trademark-codemirror',
          ])
       );
-      echo $this->fields[$fullName];
+      echo rtrim($this->fields[$fullName]);
+      echo str_repeat("\n", 10);
       echo '</textarea>';
-
-      $editor_options = [
-         'mode'               => 'text/x-scss',
-         'lineNumbers'        => true,
-
-         // Autocomplete with CTRL+SPACE
-         'extraKeys'          => [
-            'Ctrl-Space' => 'autocomplete',
-         ],
-
-         // Code folding configuration
-         'foldGutter' => true,
-         'gutters'    => [
-            'CodeMirror-linenumbers',
-            'CodeMirror-foldgutter'
-         ],
-      ];
 
       echo Html::scriptBlock('
          $(function() {
             var textarea = document.getElementById("' . $fullName . '_' . $rand . '");
-            var editorLogin = CodeMirror.fromTextArea(textarea, ' . json_encode($editor_options) . ');
+            var editorCode = CodeMirror.fromTextArea(textarea, {
+               mode: "text/x-scss",
+               lineNumbers: true,
+               viewportMargin: Infinity,
+               extraKeys: {
+                  "Ctrl-Space": "autocomplete"
+               },
+               foldGutter: true,
+               gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+            });
+            $("#' . $fullName . '_' . $rand . '").data("CodeMirrorInstance", editorCode);
 
             // Fix bad display of gutter (see https://github.com/codemirror/CodeMirror/issues/3098 )
-            setTimeout(function () {editorLogin.refresh();}, ' . (500 + self::$_i++ * 100) . ');
+            setTimeout(function () {editorCode.refresh();}, ' . (500 + self::$_i++ * 100) . ');
          });
       ');
       echo "</td>";
@@ -282,10 +277,39 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo Html::hidden('config_class', ['value' => __CLASS__]);
 
       echo "<div class='center' id='tabsbody'>";
-      echo "<table class='tab_cadre_fixe'>";
+
+      $rand = mt_rand();
+      echo "<style>
+      #tabs$rand .ui-tabs-nav {
+         width: auto;
+      }
+      #tabs$rand .ui-tabs-nav li {
+         clear: none;
+         width: auto;
+         margin-right: 5px;
+      }
+      #tabs$rand .ui-tabs-nav li a {
+         width: auto;
+      }
+      #tabs$rand .ui-tabs-panel {
+         margin-left: 0;
+      }
+      .CodeMirror {
+         border: 1px solid #eee;
+         height: auto;
+      }
+      </style>";
+
+      echo "<div id='tabs$rand' class='center tab_cadre_fixe horizontal trademark ui-tabs ui-corner-all ui-widget ui-widget-content'>";
+      echo "<ul role='tablist' class='ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header'>";
+      echo "<li><a href='#tab_trademark_favicon'>" . t_trademark('Favicon and Title') . "</a></li>";
+      echo "<li><a href='#tab_trademark_login'>" . t_trademark('Login Page') . "</a></li>";
+      echo "<li><a href='#tab_trademark_internal'>" . t_trademark('Internal Page') . "</a></li>";
+      echo "</ul>";
 
       // General
-      echo "<tr><th colspan='4'>" . t_trademark('Favicon and Title') . "</th></tr>";
+      echo "<div id='tab_trademark_favicon'>";
+      echo "<table class='tab_cadre_fixe'>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . __('Picture') . "</td>";
@@ -304,9 +328,12 @@ class PluginTrademarkConfig extends CommonDBTM {
       );
       echo "</td>";
       echo "</tr>\n";
+      echo "</table>";
+      echo "</div>";
 
       // Login
-      echo "<tr><th colspan='4'>" . t_trademark('Login Page') . "</th></tr>";
+      echo "<div id='tab_trademark_login' style='display: none;'>";
+      echo "<table class='tab_cadre_fixe'>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . __('Picture') . "</td>";
@@ -337,12 +364,17 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "</tr>\n";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>" . t_trademark('Background picture') . "</td>";
       $this->buildPictureLine('login_background_picture', '1920px x 1080px');
       echo "</tr>\n";
 
+      // Custom CSS Login
+      $this->buildCssLine('login', t_trademark('Login Page'));
+      echo "</table>";
+      echo "</div>";
+
       // Internal Page
-      echo "<tr><th colspan='4'>" . t_trademark('Internal Page') . "</th></tr>";
+      echo "<div id='tab_trademark_internal' style='display: none;'>";
+      echo "<table class='tab_cadre_fixe'>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . __('Picture') . "</td>";
@@ -372,18 +404,31 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "</td>";
       echo "</tr>\n";
 
-      // Custom CSS LOGIN
-      $this->buildCssLine('login', t_trademark('Login Page'));
+      // Custom CSS Internal
       $this->buildCssLine('internal', t_trademark('Internal Page'));
+      echo "</table>";
+      echo "</div>";
+
+      echo "</div>";
+
+      echo Html::scriptBlock("$('#tabs$rand').tabs({
+         activate: function(event, ui) {
+            var editor = ui.newPanel.find('.trademark-codemirror').data('CodeMirrorInstance');
+            if (editor) {
+               editor.refresh();
+            }
+         }
+      });");
 
       if ($canedit) {
+         echo "<table class='tab_cadre_fixe'>";
          echo "<tr class='tab_bg_2'>";
          echo "<td colspan='4' class='center'>";
          echo "<input type='submit' name='update' class='submit' value=\"" . _sx('button', 'Save') . "\">";
          echo "</td></tr>";
+         echo "</table>";
       }
 
-      echo "</table></div>";
       Html::closeForm();
    }
 }
