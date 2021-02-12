@@ -149,6 +149,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          'login_picture_max_height' => '130px',
          'login_css_custom' => '',
          'login_css_type' => $defaultCss,
+         'login_theme' => '',
          'internal_picture' => '',
          'internal_picture_width' => '100px',
          'internal_picture_height' => '55px',
@@ -300,6 +301,13 @@ class PluginTrademarkConfig extends CommonDBTM {
          border: 1px solid #eee;
          height: auto;
       }
+      .trademark-themeselect {
+         display: inline-block;
+         height: 30px;
+      }
+      .trademark-themeselect img {
+         max-height: 30px;
+      }
       </style>";
 
       echo "<div id='tabs$rand' class='center tab_cadre_fixe horizontal trademark ui-tabs ui-corner-all ui-widget ui-widget-content'>";
@@ -395,6 +403,59 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . t_trademark('Background picture') . "</td>";
       $this->buildPictureLine('login_background_picture', '1920px x 1080px');
+      echo "</tr>\n";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td>" . t_trademark('Theme') . "</td>";
+      echo "<td>";
+      echo sprintf(
+         '<select %1$s>',
+         Html::parseAttributes([
+            'name' => 'login_theme',
+            'value' => $this->fields['login_theme'],
+         ])
+      );
+
+      echo '<option value="">' . __('None') . '</option>';
+      foreach (PluginTrademarkTheme::getLoginThemes() as $id => $theme) {
+         $attrs = [
+            'name' => 'login_theme',
+            'value' => $id,
+         ];
+
+         if (isset($theme['login-preview']) && $theme['login-preview']) {
+            $attrs['data-preview'] = $theme['login-preview'];
+         }
+
+         if ($id === $this->fields['login_theme']) {
+            $attrs['selected'] = 'selected';
+         }
+
+         echo sprintf(
+            '<option %1$s>%2$s</option>',
+            Html::parseAttributes($attrs),
+            htmlentities($theme['name'])
+         );
+      }
+      echo '</select>';
+      echo Html::scriptBlock("
+         function trademarkFormatThemes(theme) {
+            console.log(theme);
+             if (!theme.id) {
+                return theme.text;
+             }
+
+             return $('<span></span>', {class: \"trademark-themeselect\"}).html('<img src=\'../plugins/trademark/themes/' + theme.id + '/login.preview.jpg\'/>'
+                      + '&nbsp;' + theme.text);
+         }
+         $(\"select[name=login_theme]\").select2({
+             templateResult: trademarkFormatThemes,
+             templateSelection: trademarkFormatThemes,
+             width: '100%',
+             escapeMarkup: function(m) { return m; }
+         });
+      ");
+      echo "</td>";
       echo "</tr>\n";
 
       // Custom CSS Login

@@ -1,0 +1,10 @@
+{
+    "name": "Aurora Boreal",
+    "description": "Aurora Boreal Theme",
+    "variables": {
+        "custom-color": {
+            "name": "Sua Cor",
+            "default": "#fff"
+        }
+    }
+}

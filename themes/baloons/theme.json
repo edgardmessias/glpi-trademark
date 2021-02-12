@@ -1,0 +1,10 @@
+{
+    "name": "Ballons",
+    "description": "Ballons Theme",
+    "variables": {
+        "custom-color": {
+            "name": "Sua Cor",
+            "default": "#2b2b2b"
+        }
+    }
+}
