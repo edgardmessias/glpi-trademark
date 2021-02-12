@@ -343,7 +343,8 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "</tr>\n";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>" . t_trademark('Footer') . "</td>";
+      echo "<td>" . __('Picture') . "</td>";
+      echo "<td>" . t_trademark('Footer text') . "</td>";
       echo "<td colspan='3'>";
       echo sprintf(
          '<input type="text" %1$s />',
@@ -391,6 +392,7 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "</tr>\n";
 
       echo "<tr class='tab_bg_1'>";
+      echo "<td>" . t_trademark('Background picture') . "</td>";
       $this->buildPictureLine('login_background_picture', '1920px x 1080px');
       echo "</tr>\n";
 

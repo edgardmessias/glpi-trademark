@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: trademark 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/edgardmessias/glpi-trademark/"
 "issues\n"
-"POT-Creation-Date: 2021-01-30 18:37-0300\n"
+"POT-Creation-Date: 2021-02-12 08:17-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,45 +18,61 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: inc/config.class.php:49 setup.php:31
+#: inc/config.class.php:27 setup.php:44
 msgid "Trademark"
 msgstr ""
 
-#: inc/config.class.php:127
+#: inc/config.class.php:105
 #, php-format
 msgid "Unable to compile the SCSS (%1$s). Message: "
 msgstr ""
 
-#: inc/config.class.php:146 inc/config.class.php:320 inc/config.class.php:387
+#: inc/config.class.php:124 inc/config.class.php:308 inc/config.class.php:400
 msgid "Login Page"
 msgstr ""
 
-#: inc/config.class.php:147 inc/config.class.php:356 inc/config.class.php:388
+#: inc/config.class.php:125 inc/config.class.php:309 inc/config.class.php:437
 msgid "Internal Page"
 msgstr ""
 
-#: inc/config.class.php:188 inc/config.class.php:191
+#: inc/config.class.php:174 inc/config.class.php:177
 msgid "Reset"
 msgstr ""
 
-#: inc/config.class.php:203
+#: inc/config.class.php:189
 #, php-format
 msgid "Recommended size: %1$s"
 msgstr ""
 
-#: inc/config.class.php:213
+#: inc/config.class.php:199
 #, php-format
 msgid "Custom CSS for %1$s"
 msgstr ""
 
-#: inc/config.class.php:216
+#: inc/config.class.php:202
 msgid "CSS Type"
 msgstr ""
 
-#: inc/config.class.php:299
+#: inc/config.class.php:307
 msgid "Favicon and Title"
 msgstr ""
 
-#: inc/config.class.php:351
+#: inc/config.class.php:335
+msgid "Footer"
+msgstr ""
+
+#: inc/config.class.php:339
+msgid "Hide"
+msgstr ""
+
+#: inc/config.class.php:340
+msgid "Custom"
+msgstr ""
+
+#: inc/config.class.php:347
+msgid "Footer text"
+msgstr ""
+
+#: inc/config.class.php:395
 msgid "Background picture"
 msgstr ""
