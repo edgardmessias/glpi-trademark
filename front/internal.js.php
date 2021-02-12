@@ -68,6 +68,22 @@ if ($pageTitle) :
    <?php
    endif;
 
+$footerDisplay = PluginTrademarkConfig::getConfig('page_footer_display', 'original');
+$footerText = PluginTrademarkConfig::getConfig('page_footer_text', '');
+if ($footerDisplay === 'hide') :
+   ?>
+         $('#footer .right .copyright').hide().text('');
+         if (!$('#footer').text()) {
+            $('#footer').hide();
+         }
+   <?php
+   endif;
+if ($footerDisplay === 'custom') :
+   ?>
+         $('#footer .right .copyright').parent().html(<?php echo json_encode($footerText) ?>);
+   <?php
+   endif;
+
 echo "});";
 if (false) {
    ?>

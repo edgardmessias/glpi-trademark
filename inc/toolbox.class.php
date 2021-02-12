@@ -67,8 +67,8 @@ class PluginTrademarkToolbox {
          // Iterate on possible suffix while dest exists.
          // This case will almost never exists as dest is based on an unique id.
          $dest = $basePath
-            . '/' . $subdirectory
-            . '/' . $filename . ($i > 0 ? '_' . $i : '') . '.' . $ext;
+         . '/' . $subdirectory
+         . '/' . $filename . ($i > 0 ? '_' . $i : '') . '.' . $ext;
          $i++;
       } while (file_exists($dest));
 

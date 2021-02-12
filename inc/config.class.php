@@ -142,6 +142,8 @@ class PluginTrademarkConfig extends CommonDBTM {
       $this->fields = [
          'favicon_picture' => '',
          'page_title' => '',
+         'page_footer_display' => 'original',
+         'page_footer_text' => '',
          'login_picture' => '',
          'login_picture_max_width' => '240px',
          'login_picture_max_height' => '130px',
@@ -328,6 +330,31 @@ class PluginTrademarkConfig extends CommonDBTM {
       );
       echo "</td>";
       echo "</tr>\n";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td>" . t_trademark('Footer') . "</td>";
+      echo "<td colspan='3'>";
+      Dropdown::showFromArray('page_footer_display', [
+         'original' => __('Original'),
+         'hide' => t_trademark('Hide'),
+         'custom' => t_trademark('Custom'),
+      ], ['value' => $this->fields['page_footer_display']]);
+      echo "</td>";
+      echo "</tr>\n";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td>" . t_trademark('Footer') . "</td>";
+      echo "<td colspan='3'>";
+      echo sprintf(
+         '<input type="text" %1$s />',
+         Html::parseAttributes([
+            'name' => 'page_footer_text',
+            'value' => $this->fields['page_footer_text'],
+         ])
+      );
+      echo "</td>";
+      echo "</tr>\n";
+
       echo "</table>";
       echo "</div>";
 
