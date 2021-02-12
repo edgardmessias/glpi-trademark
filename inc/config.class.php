@@ -326,6 +326,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          Html::parseAttributes([
             'name' => 'page_title',
             'value' => $this->fields['page_title'],
+            'style' => 'width: 98%',
          ])
       );
       echo "</td>";
@@ -343,7 +344,6 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "</tr>\n";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>" . __('Picture') . "</td>";
       echo "<td>" . t_trademark('Footer text') . "</td>";
       echo "<td colspan='3'>";
       echo sprintf(
@@ -351,6 +351,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          Html::parseAttributes([
             'name' => 'page_footer_text',
             'value' => $this->fields['page_footer_text'],
+            'style' => 'width: 98%',
          ])
       );
       echo "</td>";
