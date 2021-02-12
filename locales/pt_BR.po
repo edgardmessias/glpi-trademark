@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: trademark 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/edgardmessias/glpi-trademark/"
 "issues\n"
-"POT-Creation-Date: 2021-02-12 08:17-0300\n"
+"POT-Creation-Date: 2021-02-12 09:12-0300\n"
 "PO-Revision-Date: 2021-01-30 16:27-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -27,11 +27,11 @@ msgstr "Marca Comercial"
 msgid "Unable to compile the SCSS (%1$s). Message: "
 msgstr "Incapaz de compilar o SCSS (%1$s). Mensagem: "
 
-#: inc/config.class.php:124 inc/config.class.php:308 inc/config.class.php:400
+#: inc/config.class.php:124 inc/config.class.php:308 inc/config.class.php:401
 msgid "Login Page"
 msgstr "Página de Login"
 
-#: inc/config.class.php:125 inc/config.class.php:309 inc/config.class.php:437
+#: inc/config.class.php:125 inc/config.class.php:309 inc/config.class.php:438
 msgid "Internal Page"
 msgstr "Página Interna"
 
@@ -57,15 +57,15 @@ msgstr "Tipo de CSS"
 msgid "Favicon and Title"
 msgstr "Favicon e Título"
 
-#: inc/config.class.php:335
+#: inc/config.class.php:336
 msgid "Footer"
 msgstr "Rodapé"
 
-#: inc/config.class.php:339
+#: inc/config.class.php:340
 msgid "Hide"
 msgstr "Ocultar"
 
-#: inc/config.class.php:340
+#: inc/config.class.php:341
 msgid "Custom"
 msgstr "Personalizado"
 
@@ -73,6 +73,6 @@ msgstr "Personalizado"
 msgid "Footer text"
 msgstr "Texto do rodapé"
 
-#: inc/config.class.php:395
+#: inc/config.class.php:396
 msgid "Background picture"
 msgstr "Imagem de fundo"
