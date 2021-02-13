@@ -124,6 +124,13 @@ class PluginTrademarkConfig extends CommonDBTM {
       $input = self::checkCSS('login', t_trademark('Login Page'), $input, $old);
       $input = self::checkCSS('internal', t_trademark('Internal Page'), $input, $old);
 
+      foreach ($input as $key => $value) {
+         if ($value && strpos($key, '_blank_') === 0) {
+            $name = substr($key, 7);
+            $input[$name] = '';
+         }
+      }
+
       $input['timestamp'] = time();
 
       PluginTrademarkToolbox::setTimestamp($input['timestamp']);
@@ -453,7 +460,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          );
       }
       echo '</select>';
-?>
+      ?>
       <script type="text/javascript">
          function trademarkFormatThemes(theme) {
             var data = theme && theme.element && theme.element.dataset || {};
@@ -479,7 +486,7 @@ class PluginTrademarkConfig extends CommonDBTM {
             }
          });
       </script>
-<?php
+      <?php
       echo "</td>";
       echo "</tr>\n";
 
@@ -498,6 +505,12 @@ class PluginTrademarkConfig extends CommonDBTM {
             Html::showColorField($fieldName, [
                'value' => $fieldValue
             ]);
+            echo "&nbsp;";
+            echo Html::getCheckbox([
+               'title' => t_trademark('Reset'),
+               'name'  => "_blank_$fieldName"
+            ]);
+            echo "&nbsp;" . t_trademark('Reset');
             echo "</td>";
             echo "<td></td>";
             echo "<td></td>";
