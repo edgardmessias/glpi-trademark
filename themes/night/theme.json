@@ -4,7 +4,7 @@
     "variables": {
         "custom-color": {
             "name": "Sua Cor",
-            "default": "#fff"
+            "default": "#ffffff"
         }
     }
 }

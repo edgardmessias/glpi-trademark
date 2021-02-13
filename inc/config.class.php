@@ -428,7 +428,6 @@ class PluginTrademarkConfig extends CommonDBTM {
          '<select %1$s>',
          Html::parseAttributes([
             'name' => 'login_theme',
-            'value' => $this->fields['login_theme'],
          ])
       );
 
@@ -454,7 +453,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          );
       }
       echo '</select>';
-      ?>
+?>
       <script type="text/javascript">
          function trademarkFormatThemes(theme) {
             var data = theme && theme.element && theme.element.dataset || {};
@@ -480,9 +479,31 @@ class PluginTrademarkConfig extends CommonDBTM {
             }
          });
       </script>
-      <?php
+<?php
       echo "</td>";
       echo "</tr>\n";
+
+      $themeInfo = PluginTrademarkTheme::getThemeInfo($this->fields['login_theme']);
+      if ($themeInfo && isset($themeInfo['variables'])) {
+         foreach ($themeInfo['variables'] as $k => $v) {
+            $themeId = $themeInfo['id'];
+            $fieldName = "login_theme-$themeId-$k";
+            $fieldValue = $v['default'];
+            if (isset($this->fields[$fieldName]) && $this->fields[$fieldName]) {
+               $fieldValue = $this->fields[$fieldName];
+            }
+            echo "<tr class='tab_bg_1'>";
+            echo "<td>" . t_trademark($v['name']) . "</td>";
+            echo "<td>";
+            Html::showColorField($fieldName, [
+               'value' => $fieldValue
+            ]);
+            echo "</td>";
+            echo "<td></td>";
+            echo "<td></td>";
+            echo "</tr>\n";
+         }
+      }
 
       // Custom CSS Login
       $this->buildCssLine('login', t_trademark('Login Page'));

@@ -70,9 +70,19 @@ if ($css_type === 'scss' && $themeInfo && $themeInfo['login-scss']) {
    $css_custom = "@import '" . $themeInfo['path'] . '/' . $themeInfo['login-scss'] . "';\n" . $css_custom;
 }
 
+$variables = [];
+if ($themeInfo && isset($themeInfo['variables'])) {
+   foreach ($themeInfo['variables'] as $k => $v) {
+      $themeId = $themeInfo['id'];
+      $fieldName = "login_theme-$themeId-$k";
+      $fieldValue = PluginTrademarkConfig::getConfig($fieldName, $v['default']);
+      $variables[$k] = $fieldValue;
+   }
+}
+
 if ($css_type === 'scss' && $css_custom && PluginTrademarkScss::hasScssSuport()) {
    try {
-      $css .= PluginTrademarkScss::compileScss($css_custom);
+      $css .= PluginTrademarkScss::compileScss($css_custom, $variables);
    } catch (\Throwable $th) {
       Toolbox::logWarning($th->getMessage());
    }

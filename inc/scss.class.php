@@ -22,7 +22,7 @@ class PluginTrademarkScss {
       return !empty($namespace);
    }
 
-   static function compileScss($content) {
+   static function compileScss($content, $variables = []) {
       global $GLPI_CACHE;
 
       $namespace = static::getNamespace();
@@ -34,11 +34,14 @@ class PluginTrademarkScss {
       $compiler = "$namespace\Compiler";
       $formatter = "$namespace\Formatter\Crunched";
 
+      /** @var ScssPhp\ScssPhp\Compiler */
       $scss = new $compiler();
       $scss->setFormatter($formatter);
       $scss->addImportPath(GLPI_ROOT);
 
-      $ckey = md5($content);
+      $scss->setVariables($variables);
+
+      $ckey = md5($content.json_encode($variables));
 
       if ($GLPI_CACHE->has($ckey) && !isset($_GET['reload']) && !isset($_GET['nocache'])) {
          $css = $GLPI_CACHE->get($ckey);
