@@ -301,12 +301,28 @@ class PluginTrademarkConfig extends CommonDBTM {
          border: 1px solid #eee;
          height: auto;
       }
-      .trademark-themeselect {
-         display: inline-block;
-         height: 30px;
+      .trademark-themeselect-container .select2-selection__rendered,
+      .trademark-themeselect-dropdown .select2-results__option {
+         height: 80px !important;
+         line-height: 80px !important;
       }
-      .trademark-themeselect img {
-         max-height: 30px;
+      .trademark-themeselect-container .select2-selection__rendered img,
+      .trademark-themeselect-dropdown .select2-results__option img {
+         width: 170px;
+         height: 80px;
+         object-fit:cover;
+         float: right;
+      }
+      .trademark-themeselect-container.select2-selection--single {
+         min-width: 350px;
+         max-width: 350px;
+         height: 80px !important;
+      }
+      .trademark-themeselect-container.select2-selection--single:before {
+         line-height: 80px !important;
+      }
+      .trademark-themeselect-container .select2-selection__arrow {
+         height: 79px !important;
       }
       </style>";
 
@@ -438,23 +454,33 @@ class PluginTrademarkConfig extends CommonDBTM {
          );
       }
       echo '</select>';
-      echo Html::scriptBlock("
+      ?>
+      <script type="text/javascript">
          function trademarkFormatThemes(theme) {
-            console.log(theme);
-             if (!theme.id) {
-                return theme.text;
-             }
+            var data = theme && theme.element && theme.element.dataset || {};
+            console.log(data);
+            if (!theme.id || !data.preview) {
+               return theme.text;
+            }
 
-             return $('<span></span>', {class: \"trademark-themeselect\"}).html('<img src=\'../plugins/trademark/themes/' + theme.id + '/login.preview.jpg\'/>'
-                      + '&nbsp;' + theme.text);
+            var $span = $('<span></span>', {
+               html: '<img src="../plugins/trademark/themes/' + theme.id +
+                  '/login.preview.jpg"/>&nbsp;' + theme.text
+            });
+            return $span;
          }
-         $(\"select[name=login_theme]\").select2({
-             templateResult: trademarkFormatThemes,
-             templateSelection: trademarkFormatThemes,
-             width: '100%',
-             escapeMarkup: function(m) { return m; }
+         $("select[name=login_theme]").select2({
+            templateResult: trademarkFormatThemes,
+            templateSelection: trademarkFormatThemes,
+            width: '100%',
+            containerCssClass: 'trademark-themeselect-container',
+            dropdownCssClass: 'trademark-themeselect-dropdown',
+            escapeMarkup: function(m) {
+               return m;
+            }
          });
-      ");
+      </script>
+      <?php
       echo "</td>";
       echo "</tr>\n";
 
