@@ -132,6 +132,7 @@ class RoboFile extends \Robo\Tasks {
       $this->_remove(["$this->name.zip", "$this->name.tgz"]);
 
       $this->compile_locales();
+      $this->compile_themes();
 
       $tmpPath = $this->_tmpDir();
 
@@ -175,5 +176,24 @@ class RoboFile extends \Robo\Tasks {
       $this->taskPack("$this->name.tgz")
          ->addDir($this->name, $tmpPath)
          ->run();
+   }
+
+   public function compile_themes() {
+      $finder = new Finder();
+      $finder
+         ->files()
+         ->name('*.scss')
+         ->in('themes');
+
+      $files = [];
+      foreach ($finder as $file) {
+         $fullPath = $file->getPath();
+         // var_dump($fullPath);die;
+         $fullPath .= '/' . $file->getFilenameWithoutExtension();
+         $fullPath .= '.css';
+         $files[$file->getRealPath()] = $fullPath;
+      }
+
+      $this->taskScss($files)->run();
    }
 }

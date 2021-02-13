@@ -25,70 +25,16 @@ if (!isset($_GET['_'])) {
    if (isset($_GET['v'])) {
       $url .= '&v=' . $_GET['v'];
    }
+   if (isset($_GET['theme'])) {
+      $url .= '&theme=' . $_GET['theme'];
+   }
    Html::redirect($url, 302);
    die;
 }
 
 include('../../../inc/includes.php');
 
-$name = 'login';
-$css = "";
-
-$theme = PluginTrademarkConfig::getConfig("{$name}_theme", '');
-$themeInfo = null;
-if ($theme) {
-   $themeInfo = PluginTrademarkTheme::getThemeInfo($theme);
-}
-
-$picture = PluginTrademarkConfig::getConfig("{$name}_background_picture", '');
-
-if (!$picture && $themeInfo && $themeInfo['login-background']) {
-   $picture = $themeInfo['login-background'] . '&theme=' . $themeInfo['id'];
-}
-
-if ($picture) {
-   $css .= "#firstboxlogin, #text-login, #logo_login {";
-   $css .= "  background-color: transparent;";
-   $css .= "}";
-   $css .= "html {";
-   $css .= "  height: 100%;";
-   $css .= "}";
-   $css .= "body {";
-   $css .= "  background-size: cover;";
-   $css .= "  background-repeat: no-repeat;";
-   $css .= "  background-position: center;";
-   $css .= "  background-image: url(\"" . PluginTrademarkToolbox::getPictureUrl($picture) . "\");";
-   $css .= "}";
-}
-
-$css_type = PluginTrademarkConfig::getConfig("{$name}_css_type", 'scss');
-$css_custom = PluginTrademarkConfig::getConfig("{$name}_css_custom", '');
-
-$css_custom = html_entity_decode($css_custom);
-
-if ($css_type === 'scss' && $themeInfo && $themeInfo['login-scss']) {
-   $css_custom = "@import '" . $themeInfo['path'] . '/' . $themeInfo['login-scss'] . "';\n" . $css_custom;
-}
-
-$variables = [];
-if ($themeInfo && isset($themeInfo['variables'])) {
-   foreach ($themeInfo['variables'] as $k => $v) {
-      $themeId = $themeInfo['id'];
-      $fieldName = "login_theme-$themeId-$k";
-      $fieldValue = PluginTrademarkConfig::getConfig($fieldName, $v['default']);
-      $variables[$k] = $fieldValue;
-   }
-}
-
-if ($css_type === 'scss' && $css_custom && PluginTrademarkScss::hasScssSuport()) {
-   try {
-      $css .= PluginTrademarkScss::compileScss($css_custom, $variables);
-   } catch (\Throwable $th) {
-      Toolbox::logWarning($th->getMessage());
-   }
-} else if ($css_type === 'css') {
-   $css .= $css_custom;
-}
+$css = PluginTrademarkScss::getLoginCSS($_GET['theme']);
 
 header('Content-Type: text/css');
 

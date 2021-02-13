@@ -51,6 +51,8 @@ class PluginTrademarkTheme {
       }
       if (static::getThemePath($dir, 'login.scss')) {
          $info['login-scss'] = 'login.scss';
+      } else if (static::getThemePath($dir, 'login.css')) {
+         $info['login-css'] = 'login.css';
       }
 
       return $info;

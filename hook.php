@@ -4,7 +4,13 @@ function plugin_trademark_display_login() {
 
    $timestamp = PluginTrademarkToolbox::getTimestamp();
 
-   echo Html::css("/plugins/trademark/front/login.css.php?_=$timestamp", [
+   $cssUrl = "/plugins/trademark/front/login.css.php?_=$timestamp";
+
+   if (isset($_GET['theme'])) {
+      $cssUrl .= "&theme=" . $_GET['theme'];
+   }
+
+   echo Html::css($cssUrl, [
       'version' => PLUGIN_TRADEMARK_VERSION,
    ]);
 
