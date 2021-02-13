@@ -1,4 +1,5 @@
-//sua cor
+/*Tema 8 - Light*/
+
 $custom-color: #013453;
 
 #boxlogin input:-webkit-autofill {
@@ -91,4 +92,11 @@ h1#logo_login {
    background: $custom-color;
    border-radius: 6px;
    border: none;
+}
+
+#firstboxlogin,
+#text-login,
+#logo_login {
+   background-color: transparent;
+   padding-top: 41px;
 }

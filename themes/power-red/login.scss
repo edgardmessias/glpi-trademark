@@ -1,4 +1,5 @@
-//sua cor
+/*Tema 2 - PowerRed*/
+
 $custom-color: #ba0c16;
 
 #firstboxlogin .login_wrapper {
@@ -65,10 +66,10 @@ $custom-color: #ba0c16;
    background: $custom-color;
    border-radius: 100px;
 }
-
 h1#logo_login {
    margin-bottom: 0;
    padding-bottom: 0;
+   padding-top: 158px;
 }
 
 #boxlogin #forget {
@@ -83,14 +84,28 @@ h1#logo_login {
 #display-login,
 #text-login {
    position: absolute;
-   top: 370px;
+   top: 0;
+   width: 100%;
 }
+
+/*Center alert */
 .plugin_news_alert {
-   margin: auto;
-   width: 90%;
+   margin: 0px auto;
+   width: 52%;
    border: none;
    position: relative;
-   max-width: 55%;
-   margin-top: 20px;
-   margin-left: 23.2%;
+   max-width: 100%;
+}
+
+@media (max-width: 761px) {
+   #firstboxlogin .login_wrapper {
+      max-width: 100%;
+      width: 100%;
+      left: 0;
+      margin: 0 auto !important;
+   }
+   .plugin_news_alert {
+      margin: 82px auto;
+      width: 100%;
+   }
 }

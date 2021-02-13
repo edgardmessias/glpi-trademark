@@ -1,4 +1,5 @@
-//sua cor
+/*Tema 9 - Baloons*/
+
 $custom-color: #2b2b2b;
 
 #boxlogin input:-webkit-autofill {
@@ -71,13 +72,26 @@ h1#logo_login {
    position: absolute;
    top: 0;
 }
+.login_wrapper:before {
+   content: "";
+   border: solid 23px #d2deec42;
+   width: 100%;
+   display: block;
+   position: absolute;
+   height: 100%;
+   left: -23px;
+   top: -23px;
+   border-radius: 15px;
+   background: #e6eef800;
+   z-index: -1;
+   box-shadow: 0px 1px 25px -1px #00000063;
+}
 .login_wrapper {
-   background: #e6eef8;
-   width: 26%;
+   background: #ffffff;
+   width: 317px;
    margin: 102px auto;
    padding-bottom: 20px;
-   border: solid 30px #3441520a;
-   border-radius: 6px;
-   min-width: 300px;
+   border-radius: 0;
    position: relative;
+   box-shadow: 0px 1px 25px -1px #00000063;
 }

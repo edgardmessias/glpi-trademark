@@ -1,4 +1,5 @@
-//sua cor
+/*Tema 5  - Neon*/
+
 $custom-color: #e4edee;
 
 #firstboxlogin .login_wrapper {
@@ -39,6 +40,10 @@ $custom-color: #e4edee;
    border: 0 !important;
    border-bottom: 1px solid #ccc !important;
    background: transparent;
+}
+#boxlogin input[type="text"]:focus,
+#boxlogin input[type="password"]:focus {
+   background-color: #ffffff6e !important;
 }
 #boxlogin input::placeholder {
    /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -97,4 +102,32 @@ h1#logo_login {
 #text-login {
    position: absolute;
    top: 0;
+}
+
+/*Left alert */
+#display-login,
+#text-login {
+   width: 35%;
+   margin: 0 auto;
+   padding: 0;
+   font-size: 13px;
+   text-align: center;
+   overflow-x: hidden;
+   overflow-y: auto;
+   box-sizing: border-box;
+   position: absolute;
+   left: 0;
+}
+
+@media (max-width: 761px) {
+   #firstboxlogin .login_wrapper {
+      max-width: 100%;
+      width: 100%;
+      left: 0;
+      margin: 0 auto !important;
+   }
+   #display-login,
+   #text-login {
+      width: 100%;
+   }
 }

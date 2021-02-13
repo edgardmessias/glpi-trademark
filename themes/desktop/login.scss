@@ -1,8 +1,7 @@
+/*Tema 1 - Desktop*/
+
 $custom-color: #354445;
 
-body {
-   background-size: auto;
-}
 #firstboxlogin .login_wrapper {
    max-width: 100%;
    background: rgba(255, 255, 255, 0.9);
@@ -81,18 +80,24 @@ h1#logo_login {
    text-decoration: underline;
    font-size: 14px;
 }
-@media (min-height: 1000px) {
-   #display-login,
-   #text-login {
+/*Left alert */
+#display-login,
+#text-login {
+   width: 35%;
+   margin: 0 auto;
+   padding: 0;
+   font-size: 13px;
+   text-align: center;
+   overflow-x: hidden;
+   overflow-y: auto;
+   box-sizing: border-box;
+   position: absolute;
+   left: 0;
+}
+
+@media (max-width: 761px) {
+   #firstboxlogin .login_wrapper {
+      max-width: 100%;
       width: 100%;
-      margin: 0 auto;
-      padding: 20px 20%;
-      font-size: 13px;
-      text-align: center;
-      overflow-x: hidden;
-      overflow-y: auto;
-      box-sizing: border-box;
-      left: 18%;
-      position: absolute;
    }
 }
