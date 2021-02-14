@@ -41,6 +41,9 @@ function plugin_init_trademark() {
       // Tip Trick to add version in css output
       $PLUGIN_HOOKS["add_css"]['trademark'] = new PluginTrademarkFileVersion('front/internal.css.php');
       $PLUGIN_HOOKS["add_javascript"]['trademark'] = new PluginTrademarkFileVersion('front/internal.js.php');
+
+      $CFG_GLPI['javascript']['config']['config'][] = 'codemirror';
+      $CFG_GLPI['javascript']['config']['config'][] = 'tinymce';
    }
 }
 

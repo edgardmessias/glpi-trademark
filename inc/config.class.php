@@ -275,10 +275,6 @@ class PluginTrademarkConfig extends CommonDBTM {
 
       $this->fields = array_merge($this->fields, Config::getConfigurationValues('trademark'));
 
-      // Codemirror lib
-      echo Html::css('public/lib/codemirror.css');
-      echo Html::script("public/lib/codemirror.js");
-
       $canedit = Session::haveRight(Config::$rightname, UPDATE);
       if ($canedit) {
          echo "<form name='form' action=\"" . Toolbox::getItemTypeFormURL('Config') . "\" method='post'>";
@@ -377,14 +373,25 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . t_trademark('Footer text') . "</td>";
       echo "<td colspan='3'>";
-      echo sprintf(
-         '<input type="text" %1$s />',
-         Html::parseAttributes([
-            'name' => 'page_footer_text',
-            'value' => $this->fields['page_footer_text'],
-            'style' => 'width: 98%',
-         ])
-      );
+      Html::textarea([
+         'rand' => $rand,
+         'editor_id' => 'text' . $rand,
+         'name' => 'page_footer_text',
+         'value' => $this->fields['page_footer_text'],
+         'style' => 'width: 98%',
+         'rows' => 1,
+         'enable_richtext' => true,
+      ]);
+      ?>
+      <script type="text/javascript">
+         $(document).ready(function() {
+            var editor = tinyMCE.get(<?php echo json_encode('text' . $rand) ?>);
+            editor.settings.force_br_newlines = true;
+            editor.settings.force_p_newlines = false;
+            editor.settings.forced_root_block = '';
+         });
+      </script>
+      <?php
       echo "</td>";
       echo "</tr>\n";
 
@@ -464,7 +471,6 @@ class PluginTrademarkConfig extends CommonDBTM {
       <script type="text/javascript">
          function trademarkFormatThemes(theme) {
             var data = theme && theme.element && theme.element.dataset || {};
-            console.log(data);
             if (!theme.id || !data.preview) {
                return theme.text;
             }

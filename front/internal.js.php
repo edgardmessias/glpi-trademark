@@ -79,6 +79,7 @@ if ($footerDisplay === 'hide') :
    <?php
    endif;
 if ($footerDisplay === 'custom') :
+   $footerText = Toolbox::getHtmlToDisplay($footerText);
    ?>
          $('#footer .right .copyright').parent().html(<?php echo json_encode($footerText) ?>);
    <?php
