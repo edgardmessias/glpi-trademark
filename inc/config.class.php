@@ -572,11 +572,13 @@ class PluginTrademarkConfig extends CommonDBTM {
 
       echo Html::scriptBlock("$('#tabs$rand').tabs({
          activate: function(event, ui) {
+            localStorage['trademark_last_tab'] = $('#tabs$rand').tabs('option', 'active');
             var editor = ui.newPanel.find('.trademark-codemirror').data('CodeMirrorInstance');
             if (editor) {
                editor.refresh();
             }
-         }
+         },
+         active: localStorage['trademark_last_tab']
       });");
 
       if ($canedit) {
