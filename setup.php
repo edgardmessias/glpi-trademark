@@ -24,7 +24,13 @@ function plugin_init_trademark() {
    $PLUGIN_HOOKS['config_page']['trademark'] = '../../front/config.form.php?itemtype=Config&glpi_tab=PluginTrademarkConfig$1';
 
    $plugin = new Plugin();
+
    if ($plugin->isInstalled('trademark') && $plugin->isActivated('trademark')) {
+
+      $autoload = __DIR__ . '/vendor/autoload.php';
+      if (file_exists($autoload)) {
+         include_once $autoload;
+      };
 
       Plugin::registerClass('PluginTrademarkConfig', [
          'addtabon' => ['Config']
