@@ -382,7 +382,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          'rows' => 1,
          'enable_richtext' => true,
       ]);
-      ?>
+?>
       <script type="text/javascript">
          $(document).ready(function() {
             var editor = tinyMCE.get(<?php echo json_encode('text' . $rand) ?>);
@@ -401,6 +401,95 @@ class PluginTrademarkConfig extends CommonDBTM {
       // Login
       echo "<div id='tab_trademark_login' style='display: none;'>";
       echo "<table class='tab_cadre_fixe'>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td>" . t_trademark('Theme') . "</td>";
+      echo "<td>";
+      echo sprintf(
+         '<select %1$s>',
+         Html::parseAttributes([
+            'name' => 'login_theme',
+         ])
+      );
+
+      echo '<option value="">' . __('Original') . '</option>';
+      foreach (PluginTrademarkTheme::getLoginThemes() as $id => $theme) {
+         $attrs = [
+            'name' => 'login_theme',
+            'value' => $id,
+         ];
+
+         if (isset($theme['login-preview']) && $theme['login-preview']) {
+            $attrs['data-preview'] = $theme['login-preview'];
+         }
+
+         if ($id === $this->fields['login_theme']) {
+            $attrs['selected'] = 'selected';
+         }
+
+         echo sprintf(
+            '<option %1$s>%2$s</option>',
+            Html::parseAttributes($attrs),
+            htmlentities($theme['name'])
+         );
+      }
+      echo '</select>';
+      ?>
+      <script type="text/javascript">
+         function trademarkFormatThemes(theme) {
+            var data = theme && theme.element && theme.element.dataset || {};
+            if (!theme.id || !data.preview) {
+               return $('<span></span>', {
+               html: '<img src="../plugins/trademark/pics/login.preview.png"/>&nbsp;' + theme.text
+            });
+            }
+
+            return $('<span></span>', {
+               html: '<img src="../plugins/trademark/themes/' + theme.id + '/' + data.preview + '"/>&nbsp;' + theme.text
+            });
+         }
+         $("select[name=login_theme]").select2({
+            templateResult: trademarkFormatThemes,
+            templateSelection: trademarkFormatThemes,
+            width: '100%',
+            containerCssClass: 'trademark-themeselect-container',
+            dropdownCssClass: 'trademark-themeselect-dropdown',
+            escapeMarkup: function(m) {
+               return m;
+            }
+         });
+      </script>
+<?php
+      echo "</td>";
+      echo "</tr>\n";
+
+      $themeInfo = PluginTrademarkTheme::getThemeInfo($this->fields['login_theme']);
+      if ($themeInfo && isset($themeInfo['variables'])) {
+         foreach ($themeInfo['variables'] as $k => $v) {
+            $themeId = $themeInfo['id'];
+            $fieldName = "login_theme-$themeId-$k";
+            $fieldValue = $v['default'];
+            if (isset($this->fields[$fieldName]) && $this->fields[$fieldName]) {
+               $fieldValue = $this->fields[$fieldName];
+            }
+            echo "<tr class='tab_bg_1'>";
+            echo "<td>" . t_trademark($v['name']) . "</td>";
+            echo "<td>";
+            Html::showColorField($fieldName, [
+               'value' => $fieldValue
+            ]);
+            echo "&nbsp;";
+            echo Html::getCheckbox([
+               'title' => t_trademark('Reset'),
+               'name'  => "_blank_$fieldName"
+            ]);
+            echo "&nbsp;" . t_trademark('Reset');
+            echo "</td>";
+            echo "<td></td>";
+            echo "<td></td>";
+            echo "</tr>\n";
+         }
+      }
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . __('Picture') . "</td>";
@@ -434,95 +523,6 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "<td>" . t_trademark('Background picture') . "</td>";
       $this->buildPictureLine('login_background_picture', '1920px x 1080px');
       echo "</tr>\n";
-
-      echo "<tr class='tab_bg_1'>";
-      echo "<td>" . t_trademark('Theme') . "</td>";
-      echo "<td>";
-      echo sprintf(
-         '<select %1$s>',
-         Html::parseAttributes([
-            'name' => 'login_theme',
-         ])
-      );
-
-      echo '<option value="">' . __('None') . '</option>';
-      foreach (PluginTrademarkTheme::getLoginThemes() as $id => $theme) {
-         $attrs = [
-            'name' => 'login_theme',
-            'value' => $id,
-         ];
-
-         if (isset($theme['login-preview']) && $theme['login-preview']) {
-            $attrs['data-preview'] = $theme['login-preview'];
-         }
-
-         if ($id === $this->fields['login_theme']) {
-            $attrs['selected'] = 'selected';
-         }
-
-         echo sprintf(
-            '<option %1$s>%2$s</option>',
-            Html::parseAttributes($attrs),
-            htmlentities($theme['name'])
-         );
-      }
-      echo '</select>';
-      ?>
-      <script type="text/javascript">
-         function trademarkFormatThemes(theme) {
-            var data = theme && theme.element && theme.element.dataset || {};
-            if (!theme.id || !data.preview) {
-               return theme.text;
-            }
-
-            var $span = $('<span></span>', {
-               html: '<img src="../plugins/trademark/themes/' + theme.id +
-                  '/login.preview.jpg"/>&nbsp;' + theme.text
-            });
-            return $span;
-         }
-         $("select[name=login_theme]").select2({
-            templateResult: trademarkFormatThemes,
-            templateSelection: trademarkFormatThemes,
-            width: '100%',
-            containerCssClass: 'trademark-themeselect-container',
-            dropdownCssClass: 'trademark-themeselect-dropdown',
-            escapeMarkup: function(m) {
-               return m;
-            }
-         });
-      </script>
-      <?php
-      echo "</td>";
-      echo "</tr>\n";
-
-      $themeInfo = PluginTrademarkTheme::getThemeInfo($this->fields['login_theme']);
-      if ($themeInfo && isset($themeInfo['variables'])) {
-         foreach ($themeInfo['variables'] as $k => $v) {
-            $themeId = $themeInfo['id'];
-            $fieldName = "login_theme-$themeId-$k";
-            $fieldValue = $v['default'];
-            if (isset($this->fields[$fieldName]) && $this->fields[$fieldName]) {
-               $fieldValue = $this->fields[$fieldName];
-            }
-            echo "<tr class='tab_bg_1'>";
-            echo "<td>" . t_trademark($v['name']) . "</td>";
-            echo "<td>";
-            Html::showColorField($fieldName, [
-               'value' => $fieldValue
-            ]);
-            echo "&nbsp;";
-            echo Html::getCheckbox([
-               'title' => t_trademark('Reset'),
-               'name'  => "_blank_$fieldName"
-            ]);
-            echo "&nbsp;" . t_trademark('Reset');
-            echo "</td>";
-            echo "<td></td>";
-            echo "<td></td>";
-            echo "</tr>\n";
-         }
-      }
 
       // Custom CSS Login
       $this->buildCssLine('login', t_trademark('Login Page'));

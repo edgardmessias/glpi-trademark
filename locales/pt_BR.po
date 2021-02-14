@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: trademark 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/edgardmessias/glpi-trademark/"
 "issues\n"
-"POT-Creation-Date: 2021-02-12 09:12-0300\n"
+"POT-Creation-Date: 2021-02-14 19:11-0300\n"
 "PO-Revision-Date: 2021-01-30 16:27-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/config.class.php:27 setup.php:44
+#: inc/config.class.php:27 setup.php:53
 msgid "Trademark"
 msgstr "Marca Comercial"
 
@@ -27,52 +27,57 @@ msgstr "Marca Comercial"
 msgid "Unable to compile the SCSS (%1$s). Message: "
 msgstr "Incapaz de compilar o SCSS (%1$s). Mensagem: "
 
-#: inc/config.class.php:124 inc/config.class.php:308 inc/config.class.php:401
+#: inc/config.class.php:124 inc/config.class.php:335 inc/config.class.php:528
 msgid "Login Page"
 msgstr "Página de Login"
 
-#: inc/config.class.php:125 inc/config.class.php:309 inc/config.class.php:438
+#: inc/config.class.php:125 inc/config.class.php:336 inc/config.class.php:565
 msgid "Internal Page"
 msgstr "Página Interna"
 
-#: inc/config.class.php:174 inc/config.class.php:177
+#: inc/config.class.php:182 inc/config.class.php:185 inc/config.class.php:483
+#: inc/config.class.php:486
 msgid "Reset"
 msgstr "Redefinir"
 
-#: inc/config.class.php:189
+#: inc/config.class.php:197
 #, php-format
 msgid "Recommended size: %1$s"
 msgstr "Tamanho recomendado: %1$s"
 
-#: inc/config.class.php:199
+#: inc/config.class.php:207
 #, php-format
 msgid "Custom CSS for %1$s"
 msgstr "CSS personalizado para %1$s"
 
-#: inc/config.class.php:202
+#: inc/config.class.php:210
 msgid "CSS Type"
 msgstr "Tipo de CSS"
 
-#: inc/config.class.php:307
+#: inc/config.class.php:334
 msgid "Favicon and Title"
 msgstr "Favicon e Título"
 
-#: inc/config.class.php:336
+#: inc/config.class.php:363
 msgid "Footer"
 msgstr "Rodapé"
 
-#: inc/config.class.php:340
+#: inc/config.class.php:367
 msgid "Hide"
 msgstr "Ocultar"
 
-#: inc/config.class.php:341
+#: inc/config.class.php:368
 msgid "Custom"
 msgstr "Personalizado"
 
-#: inc/config.class.php:347
+#: inc/config.class.php:374
 msgid "Footer text"
 msgstr "Texto do rodapé"
 
-#: inc/config.class.php:396
+#: inc/config.class.php:406
+msgid "Theme"
+msgstr "Tema"
+
+#: inc/config.class.php:523
 msgid "Background picture"
 msgstr "Imagem de fundo"
