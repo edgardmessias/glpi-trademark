@@ -3,7 +3,7 @@
     "description": "Desktop Theme",
     "variables": {
         "custom-color": {
-            "name": "Sua Cor",
+            "name": "Cor dos Botões",
             "default": "#354445"
         }
     }

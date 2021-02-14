@@ -3,7 +3,7 @@
     "description": "Power Red Theme",
     "variables": {
         "custom-color": {
-            "name": "Sua Cor",
+            "name": "Cor dos Botões",
             "default": "#ba0c16"
         }
     }

@@ -3,7 +3,7 @@
     "description": "Neon Theme",
     "variables": {
         "custom-color": {
-            "name": "Sua Cor",
+            "name": "Cor dos Botões",
             "default": "#e4edee"
         }
     }
