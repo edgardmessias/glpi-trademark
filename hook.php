@@ -3,7 +3,7 @@
 function plugin_trademark_display_login() {
 
    $themeInfo = null;
-   if ($_GET['theme']) {
+   if (isset($_GET['theme'])) {
       $themeInfo = PluginTrademarkTheme::getThemeInfo($_GET['theme']);
    }
    if (!$themeInfo) {

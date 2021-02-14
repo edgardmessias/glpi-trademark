@@ -34,7 +34,7 @@ if (!isset($_GET['_'])) {
 
 include('../../../inc/includes.php');
 
-$css = PluginTrademarkScss::getLoginCSS($_GET['theme']);
+$css = PluginTrademarkScss::getLoginCSS(isset($_GET['theme']) ? $_GET['theme'] : null);
 
 header('Content-Type: text/css');
 
