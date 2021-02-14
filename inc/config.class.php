@@ -135,6 +135,8 @@ class PluginTrademarkConfig extends CommonDBTM {
 
       PluginTrademarkToolbox::setTimestamp($input['timestamp']);
 
+      Session::addMessageAfterRedirect(__('Item successfully updated'), false, INFO);
+
       return $input;
    }
 
