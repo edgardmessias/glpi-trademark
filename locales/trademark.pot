@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: trademark 1.2.2\n"
+"Project-Id-Version: trademark 1.2.3\n"
 "Report-Msgid-Bugs-To: https://github.com/edgardmessias/glpi-trademark/"
 "issues\n"
-"POT-Creation-Date: 2021-02-17 13:21-0300\n"
+"POT-Creation-Date: 2021-02-17 13:42-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "Unable to compile the SCSS (%1$s). Message: "
 msgstr ""
 
-#: inc/config.class.php:124 inc/config.class.php:337 inc/config.class.php:530
+#: inc/config.class.php:124 inc/config.class.php:338 inc/config.class.php:545
 msgid "Login Page"
 msgstr ""
 
-#: inc/config.class.php:125 inc/config.class.php:338 inc/config.class.php:567
+#: inc/config.class.php:125 inc/config.class.php:339 inc/config.class.php:582
 msgid "Internal Page"
 msgstr ""
 
-#: inc/config.class.php:184 inc/config.class.php:187 inc/config.class.php:485
-#: inc/config.class.php:488
+#: inc/config.class.php:184 inc/config.class.php:187 inc/config.class.php:500
+#: inc/config.class.php:503
 msgid "Reset"
 msgstr ""
 
@@ -54,30 +54,30 @@ msgstr ""
 msgid "CSS Type"
 msgstr ""
 
-#: inc/config.class.php:336
+#: inc/config.class.php:337
 msgid "Favicon and Title"
 msgstr ""
 
-#: inc/config.class.php:365
+#: inc/config.class.php:366
 msgid "Footer"
 msgstr ""
 
-#: inc/config.class.php:369
+#: inc/config.class.php:370
 msgid "Hide"
 msgstr ""
 
-#: inc/config.class.php:370
+#: inc/config.class.php:371
 msgid "Custom"
 msgstr ""
 
-#: inc/config.class.php:376
+#: inc/config.class.php:377
 msgid "Footer text"
 msgstr ""
 
-#: inc/config.class.php:408
+#: inc/config.class.php:409
 msgid "Theme"
 msgstr ""
 
-#: inc/config.class.php:525
+#: inc/config.class.php:540
 msgid "Background picture"
 msgstr ""
