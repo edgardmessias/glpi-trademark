@@ -269,6 +269,7 @@ class PluginTrademarkConfig extends CommonDBTM {
     * @return Nothing (display)
     * */
    function showFormDisplay() {
+      global $CFG_GLPI;
       if (!Config::canView()) {
          return false;
       }
@@ -384,7 +385,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          'rows' => 1,
          'enable_richtext' => true,
       ]);
-?>
+      ?>
       <script type="text/javascript">
          $(document).ready(function() {
             var editor = tinyMCE.get(<?php echo json_encode('text' . $rand) ?>);
@@ -406,7 +407,7 @@ class PluginTrademarkConfig extends CommonDBTM {
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . t_trademark('Theme') . "</td>";
-      echo "<td>";
+      echo "<td colspan='2'>";
       echo sprintf(
          '<select %1$s>',
          Html::parseAttributes([
@@ -442,8 +443,8 @@ class PluginTrademarkConfig extends CommonDBTM {
             var data = theme && theme.element && theme.element.dataset || {};
             if (!theme.id || !data.preview) {
                return $('<span></span>', {
-               html: '<img src="../plugins/trademark/pics/login.preview.png"/>&nbsp;' + theme.text
-            });
+                  html: '<img src="../plugins/trademark/pics/login.preview.png"/>&nbsp;' + theme.text
+               });
             }
 
             return $('<span></span>', {
@@ -461,7 +462,21 @@ class PluginTrademarkConfig extends CommonDBTM {
             }
          });
       </script>
-<?php
+      <?php
+      echo "</td>";
+      echo "<td>";
+      echo '<a id="trademark-preview" href="#">' . __('Preview') . '</a>';
+      ?>
+      <script type="text/javascript">
+         $('#trademark-preview').on('click', function() {
+            var url = <?php echo json_encode($CFG_GLPI['root_doc'] . "/index.php") ?>;
+            url += '?noAUTO=1';
+            var theme = $("select[name=login_theme]").val() || 'original';
+            url += '&theme=' + theme;
+            window.open(url, 'trademark_preview', 'titlebar=0&status=0');
+         });
+      </script>
+      <?php
       echo "</td>";
       echo "</tr>\n";
 
