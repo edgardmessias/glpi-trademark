@@ -1,19 +1,12 @@
 <?php
 
-if (!defined('GLPI_ROOT')) {
-   define('GLPI_ROOT', dirname(dirname(dirname(__DIR__))));
-}
-
 $_GET["donotcheckversion"]   = true;
 $dont_check_maintenance_mode = true;
-$name = 'internal';
+
+include('../../../inc/includes.php');
 
 // Redirect if is a not cached URL
 if (!isset($_GET['_'])) {
-   //std cache, with DB connection
-   include_once GLPI_ROOT . "/inc/db.function.php";
-   include_once GLPI_ROOT . '/inc/config.php';
-
    $timestamp = PluginTrademarkToolbox::getTimestamp();
 
    // Disable cache and redirect to cached URL
@@ -29,8 +22,6 @@ if (!isset($_GET['_'])) {
    Html::redirect($url, 302);
    die;
 }
-
-include('../../../inc/includes.php');
 
 header('Content-Type: application/javascript');
 
