@@ -193,6 +193,7 @@ class PluginTrademarkConfig extends CommonDBTM {
       Html::file([
          'name'       => "new_$name",
          'onlyimages' => true,
+         'min_file_size' => 1,
       ]);
       if ($recommendedSize) {
          echo '<small>';
@@ -332,17 +333,18 @@ class PluginTrademarkConfig extends CommonDBTM {
       }
       </style>";
 
-      echo "<div id='tabs$rand' class='center tab_cadre_fixe horizontal trademark ui-tabs ui-corner-all ui-widget ui-widget-content'>";
-      echo "<ul role='tablist' class='ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header'>";
-      echo "<li><a href='#tab_trademark_favicon'>" . t_trademark('Favicon and Title') . "</a></li>";
-      echo "<li><a href='#tab_trademark_login'>" . t_trademark('Login Page') . "</a></li>";
-      echo "<li><a href='#tab_trademark_internal'>" . t_trademark('Internal Page') . "</a></li>";
-      echo "</ul>";
+      // echo "<div id='tabs$rand' class='center tab_cadre_fixe horizontal trademark ui-tabs ui-corner-all ui-widget ui-widget-content'>";
+      // echo "<ul role='tablist' class='ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header'>";
+      // echo "<li><a href='#tab_trademark_favicon'>" . t_trademark('Favicon and Title') . "</a></li>";
+      // echo "<li><a href='#tab_trademark_login'>" . t_trademark('Login Page') . "</a></li>";
+      // echo "<li><a href='#tab_trademark_internal'>" . t_trademark('Internal Page') . "</a></li>";
+      // echo "</ul>";
 
       // General
       echo "<div id='tab_trademark_favicon'>";
       echo "<table class='tab_cadre_fixe'>";
 
+      echo  "<tr class='noHover'><th colspan='4' >" . t_trademark('Favicon and Title') . "</th></tr>";
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . __('Picture') . "</td>";
       $this->buildPictureLine('favicon_picture', '192px x 192px');
@@ -402,9 +404,10 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "</div>";
 
       // Login
-      echo "<div id='tab_trademark_login' style='display: none;'>";
+      echo "<div id='tab_trademark_login'>";
       echo "<table class='tab_cadre_fixe'>";
 
+      echo  "<tr class='noHover'><th colspan='4' >" . t_trademark('Login Page') . "</th></tr>";
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . t_trademark('Theme') . "</td>";
       echo "<td colspan='2'>";
@@ -547,9 +550,10 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "</div>";
 
       // Internal Page
-      echo "<div id='tab_trademark_internal' style='display: none;'>";
+      echo "<div id='tab_trademark_internal'>";
       echo "<table class='tab_cadre_fixe'>";
 
+      echo  "<tr class='noHover'><th colspan='4' >" . t_trademark('Internal Page') . "</th></tr>";
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . __('Picture') . "</td>";
       $this->buildPictureLine('internal_picture', '100px x 55px');
@@ -583,7 +587,7 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "</table>";
       echo "</div>";
 
-      echo "</div>";
+      // echo "</div>";
 
       echo Html::scriptBlock("$('#tabs$rand').tabs({
          activate: function(event, ui) {

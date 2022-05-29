@@ -28,13 +28,13 @@ $css = "";
 
 $picture = PluginTrademarkConfig::getConfig("{$name}_picture", '');
 if ($picture) {
-   $css .= "#header #c_logo {";
-   $css .= " width: " . PluginTrademarkConfig::getConfig("{$name}_picture_width", '100px') . ";";
-   $css .= " height: " . PluginTrademarkConfig::getConfig("{$name}_picture_height", '55px') . ";";
-   $css .= " background-size: contain;";
-   $css .= " background-repeat: no-repeat;";
-   $css .= " background-position: center;";
-   $css .= " background-image: url(\"" . PluginTrademarkToolbox::getPictureUrl($picture) . "\");";
+   $css .= ".page .glpi-logo {";
+   $css .= " width: " . PluginTrademarkConfig::getConfig("{$name}_picture_width", '100px') . " !important;";
+   $css .= " height: " . PluginTrademarkConfig::getConfig("{$name}_picture_height", '55px') . " !important;";
+   $css .= " background-size: contain !important;";
+   $css .= " background-repeat: no-repeat !important;";
+   $css .= " background-position: center !important;";
+   $css .= " background-image: url(\"" . PluginTrademarkToolbox::getPictureUrl($picture) . "\") !important;";
    $css .= "}";
 }
 
