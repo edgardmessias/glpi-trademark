@@ -43,7 +43,7 @@ class PluginTrademarkConfig extends CommonDBTM {
    protected static function checkPicture($name, $input, $old, $width = 0, $height = 0, $max_size = 500) {
 
       $blank = "_blank_$name";
-      $new = "_new_$name";
+      $new = "_$name";
 
       if (isset($input[$blank]) && $input[$blank]) {
          unset($input[$blank]);
@@ -51,7 +51,7 @@ class PluginTrademarkConfig extends CommonDBTM {
             PluginTrademarkToolbox::deletePicture($old[$name]);
          }
          $input[$name] = '';
-      } else if (isset($input[$new]) && !empty($input[$new])) {
+      } else if (isset($input[$new]) && !empty($input[$new]) && !empty($input[$new][0])) {
          $picName = array_shift($input[$new]);
          $picPath = GLPI_TMP_DIR . '/' . $picName;
          $picResizedPath = GLPI_TMP_DIR . '/resized_' . $picName;
@@ -68,8 +68,8 @@ class PluginTrademarkConfig extends CommonDBTM {
             Session::addMessageAfterRedirect(__('Unable to save picture file.'), true, ERROR);
          }
 
-         if (isset($old['$name']) && $old['$name']) {
-            PluginTrademarkToolbox::deletePicture($old['$name']);
+         if (isset($old[$name]) && $old[$name]) {
+            PluginTrademarkToolbox::deletePicture($old[$name]);
          }
       }
 
@@ -78,6 +78,7 @@ class PluginTrademarkConfig extends CommonDBTM {
       unset($input["_prefix_new_$name"]);
       unset($input["_tag_$name"]);
       unset($input["_tag_new_$name"]);
+      unset($input["_uploader_$name"]);
       unset($input["new_$name"]);
       unset($input[$blank]);
       unset($input[$new]);
@@ -191,7 +192,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          echo '<td colspan="3">';
       }
       Html::file([
-         'name'       => "new_$name",
+         'name'       => $name,
          'onlyimages' => true,
          'min_file_size' => 1,
       ]);
@@ -386,6 +387,8 @@ class PluginTrademarkConfig extends CommonDBTM {
          'style' => 'width: 98%',
          'rows' => 1,
          'enable_richtext' => true,
+         'enable_fileupload' => false,
+         'enable_images' => false,
       ]);
       ?>
       <script type="text/javascript">
