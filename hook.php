@@ -103,7 +103,7 @@ function plugin_trademark_display_login() {
       <?php
       endif;
    if ($footerDisplay === 'custom') :
-      $footerText = Toolbox::getHtmlToDisplay($footerText);
+      $footerText = \Glpi\RichText\RichText::getEnhancedHtml($footerText);
       ?>
          $(function() {
             $('#footer-login').html(<?php echo json_encode($footerText) ?>);

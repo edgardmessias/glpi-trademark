@@ -63,16 +63,13 @@ $footerDisplay = PluginTrademarkConfig::getConfig('page_footer_display', 'origin
 $footerText = PluginTrademarkConfig::getConfig('page_footer_text', '');
 if ($footerDisplay === 'hide') :
    ?>
-         $('#footer .right .copyright').hide().text('');
-         if (!$('#footer').text()) {
-            $('#footer').hide();
-         }
+         $('a[id^=show_about_modal_]').hide();
    <?php
    endif;
 if ($footerDisplay === 'custom') :
-   $footerText = Toolbox::getHtmlToDisplay($footerText);
+   $footerText = \Glpi\RichText\RichText::getEnhancedHtml($footerText);
    ?>
-         $('#footer .right .copyright').parent().html(<?php echo json_encode($footerText) ?>);
+         $('div[id^=about_modal_] .copyright').parent().parent().html(<?php echo json_encode($footerText) ?>);
    <?php
    endif;
 
