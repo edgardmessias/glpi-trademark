@@ -18,9 +18,12 @@
         "lint:fix": "phpcbf"
     },
     "config": {
-        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
         "platform": {
             "php": "7.2.0"
-        }
+        },
+        "sort-packages": true
     }
 }
