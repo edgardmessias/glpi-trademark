@@ -106,7 +106,7 @@ function plugin_trademark_display_login() {
       $footerText = \Glpi\RichText\RichText::getEnhancedHtml($footerText);
       ?>
          $(function() {
-            $('#footer-login').html(<?php echo json_encode($footerText) ?>);
+            $('a.copyright').parent().html(<?php echo json_encode($footerText) ?>);
          });
       <?php
       endif;
