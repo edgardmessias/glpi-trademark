@@ -36,6 +36,23 @@ function plugin_trademark_display_login() {
    ]);
 
    ?>
+   <?php if ($loginPicture) : ?>
+      <?php
+      $pictureUrl = PluginTrademarkToolbox::getPictureUrl($loginPicture);
+      $maxWidth = PluginTrademarkConfig::getConfig('login_picture_max_width', '145px');
+      $maxHeight = PluginTrademarkConfig::getConfig('login_picture_max_height', '80px');
+      ?>
+      <style>
+         .page-anonymous .glpi-logo {
+            --logo: url(<?php echo $pictureUrl ?>);
+            content: url(<?php echo $pictureUrl ?>);
+            width: auto;
+            height: auto;
+            max-width: <?php echo $maxWidth ?>px;
+            max-height: <?php echo $maxHeight ?>px;
+         }
+      </style>
+   <?php endif; ?>
    <script type="text/javascript">
       var $box = $('#firstboxlogin');
       var $wrapper = $('<div />', {
@@ -44,38 +61,6 @@ function plugin_trademark_display_login() {
       $wrapper.prependTo($box);
       $('#display-login').appendTo($box);
    <?php
-
-   if ($loginPicture) :
-      $pictureUrl = PluginTrademarkToolbox::getPictureUrl($loginPicture);
-      $css = [
-         'max-width' => PluginTrademarkConfig::getConfig('login_picture_max_width', '145px'),
-         'max-height' => PluginTrademarkConfig::getConfig('login_picture_max_height', '80px'),
-      ];
-      ?>
-         var $logo_login = $('#logo_login');
-         var $img = $logo_login.find('img');
-         if (!$img.length) {
-            $logo_login.replaceWith($('<h1 />', {
-               id: 'logo_login',
-               html: $('<img />', {
-                  src: <?php echo json_encode($pictureUrl) ?>,
-                  css: <?php echo json_encode($css) ?>
-               })
-            }));
-            $logo_login = $('#logo_login');
-         } else {
-            $img.css(<?php echo json_encode($css) ?>);
-            $img.attr('src', <?php echo json_encode($pictureUrl) ?>);
-         }
-         // $logo_login.css(<?php echo json_encode($css) ?>);
-         // $logo_login.css({
-         //    'background-repeat': 'no-repeat',
-         //    'background-size': 'contain',
-         //    'background-position': 'center',
-         //    'background-image': 'url(<?php echo json_encode($pictureUrl) ?>)'
-         // });
-      <?php
-      endif;
    $favicon = PluginTrademarkConfig::getConfig('favicon_picture');
    if ($favicon) :
       $faviconUrl = PluginTrademarkToolbox::getPictureUrl($favicon);
