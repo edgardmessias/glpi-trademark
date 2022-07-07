@@ -2,86 +2,116 @@
 
 $custom-color: #fff !default;
 
-#boxlogin input:-webkit-autofill {
-   box-shadow: 0 0 0px 1000px #fff inset;
+.card {
+   border: 0;
+   background: transparent;
 }
-#boxlogin input[type="text"],
-#boxlogin select,
-#boxlogin input[type="password"] {
+.flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
+   width: 525px;
+   background: transparent;
+   margin: 0px auto !important;
+}
+.col-md-5 {
+   margin: 0 !important;
    width: 100%;
-   height: auto;
-   display: block;
-   border: none !important;
-   padding: 10px 10px 10px 10px;
-   font-size: 1.4em;
+}
+h2.card-header.text-center.mb-4 {
+   display: none;
+}
+.flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
+   min-height: 711px;
+   width: 525px;
+   background: transparent;
    border-radius: 0;
-   box-sizing: border-box;
-   border: 0 !important;
-   border-bottom: 1px solid #ccc !important;
-   background: transparent;
+   box-shadow: 0 4px 30pxrgba (0, 0, 0, 0.1);
+   backdrop-filter: blur(5px);
+   -webkit-backdrop-filter: blur(5px);
+   border: 1pxsolidrgba (255, 255, 255, 0.3);
+   margin: 0px auto !important;
+   height: 100% !important;
 }
-#boxlogin input[type="text"]:focus,
-#boxlogin input[type="password"]:focus {
-   background-color: #ffffff6e !important;
-}
-#boxlogin input::placeholder {
-   /* Chrome, Firefox, Opera, Safari 10.1+ */
-   color: #e5edee;
-   opacity: 1; /* Firefox */
+span.glpi-logo.mb-4 {
+   margin: 0 !important;
 }
 
-#boxlogin input:-ms-input-placeholder {
-   /* Internet Explorer 10-11 */
-   color: #e5edee;
+button.btn.btn-primary.w-100 {
+   background: #ba0c16;
+   color: #fff;
+   padding: 11px;
+   border-radius: 30px;
 }
-#boxlogin #login_input_name:before {
-   color: $custom-color;
+
+.btn-primary,
+.btn-outline-primary,
+.btn-ghost-primary {
+   --tblr-btn-color: #71090e;
+   --tblr-btn-color-interactive: #8d0a10;
+   --tblr-btn-color-text: #1e293b;
+}
+.form-control:focus {
+   color: inherit;
+   background-color: #fdfdfd;
+   border-color: #b90e16;
+   outline: 0;
+   box-shadow: 0 0 0 0.25rem rgb(185 14 22 / 27%);
+}
+
+.mb-3,
+.mb-4 {
+   position: relative;
+}
+
+.mb-3 label.form-label:before {
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   content: "\f007";
    position: absolute;
-   left: inherit;
-   right: 11px !important;
-   top: 9px;
-   font-size: 19px;
+   right: 20px;
+   color: #6a696982;
+   top: 42px;
 }
-#boxlogin #login_input_password:before {
-   color: $custom-color;
+.mb-4 label.form-label:before {
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   content: "\f023";
    position: absolute;
-   left: inherit;
-   right: 11px !important;
-   top: 9px;
-   font-size: 19px;
+   right: 20px;
+   color: #6a696982;
+   top: 42px;
 }
 
-#boxlogin input.submit {
-   margin-top: 20px;
+.col-md-5 {
+   margin: 0 !important;
    width: 100%;
-   height: auto;
-   font-size: 1.3em;
-   padding: 14px;
-   color: $custom-color;
-   background: transparent;
-   border-radius: 100px;
-   border: solid 1px $custom-color;
-}
-h1#logo_login {
-   margin-bottom: 0;
-   padding-bottom: 0;
+   max-width: 289px;
 }
 
-#boxlogin #forget {
-   margin-top: 50px;
-   color: $custom-color;
-   width: 100%;
+.form-control {
    display: block;
-   text-align: center;
-   text-decoration: underline;
-   font-size: 14px;
+   width: 100%;
+   padding: 0.7375rem 0.75rem;
+   font-size: 0.875rem;
+   font-weight: 400;
+   line-height: 1.4285714286;
+   color: inherit;
+   background-color: #fdfdfd;
+   background-clip: padding-box;
+   border: 1px solid #d9dbde;
+   appearance: none;
+   border-radius: 34px;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-
-#display-login,
-#text-login {
-   position: absolute;
-   top: 0;
+button.btn.btn-primary.w-100 {
+   background: transparent;
+   color: #fff;
+   padding: 11px;
+   border-radius: 30px;
+   border: 1px solid #fff;
 }
-#firstboxlogin .login_wrapper {
-   padding-top: 151px;
+label.form-label {
+   color: #fff;
+}
+a {
+   color: #73fff9 !important;
+   text-decoration: none;
 }
