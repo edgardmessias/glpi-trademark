@@ -54,12 +54,8 @@ function plugin_trademark_display_login() {
       </style>
    <?php endif; ?>
    <script type="text/javascript">
-      var $box = $('#firstboxlogin');
-      var $wrapper = $('<div />', {
-         class: 'login_wrapper'
-      }).append($box.contents());
-      $wrapper.prependTo($box);
-      $('#display-login').appendTo($box);
+      $('#login_name').attr('placeholder', <?php echo json_encode(__('Login')) ?>);
+      $('input[type=password]').attr('placeholder', <?php echo json_encode(__('Password')) ?>);
    <?php
    $favicon = PluginTrademarkConfig::getConfig('favicon_picture');
    if ($favicon) :
