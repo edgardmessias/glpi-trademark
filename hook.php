@@ -30,6 +30,9 @@ function plugin_trademark_display_login() {
    if (isset($_GET['theme'])) {
       $cssUrl .= "&theme=" . $_GET['theme'];
    }
+   if (isset($_GET['nocache'])) {
+      $cssUrl .= "&nocache=" . $_GET['nocache'];
+   }
 
    echo Html::css($cssUrl, [
       'version' => PLUGIN_TRADEMARK_VERSION,

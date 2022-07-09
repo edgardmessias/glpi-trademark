@@ -1,0 +1,119 @@
+/*Tema 10 - Original*/
+
+.card {
+   border: 0;
+   background: transparent;
+}
+.flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
+   width: 525px;
+   background: transparent;
+   margin: 0px auto !important;
+}
+.col-md-5 {
+   margin: 0 !important;
+   width: 100%;
+}
+h2.card-header.text-center.mb-4 {
+   display: none;
+}
+.flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
+   min-height: 711px;
+   width: 525px;
+   background: transparent;
+   border-radius: 0;
+   box-shadow: 0 4px 30pxrgba (0, 0, 0, 0.1);
+   -webkit-backdrop-filter: blur(5px);
+   border: 1pxsolidrgba (255, 255, 255, 0.3);
+   margin: 0px auto !important;
+   height: 100% !important;
+}
+span.glpi-logo.mb-4 {
+   margin: 0 !important;
+}
+
+button.btn.btn-primary.w-100 {
+   background: #ba0c16;
+   color: #fff;
+   padding: 11px;
+   border-radius: 30px;
+}
+
+.btn-primary,
+.btn-outline-primary,
+.btn-ghost-primary {
+   --tblr-btn-color: #71090e;
+   --tblr-btn-color-interactive: #8d0a10;
+   --tblr-btn-color-text: #1e293b;
+}
+
+.mb-3,
+.mb-4 {
+   position: relative;
+}
+
+.mb-3 label.form-label:before {
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   content: "\f007";
+   position: absolute;
+   right: 20px;
+   color: #6a696982;
+   top: 42px;
+}
+.mb-4 label.form-label:before {
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   content: "\f023";
+   position: absolute;
+   right: 20px;
+   color: #6a696982;
+   top: 42px;
+}
+
+.col-md-5 {
+   margin: 0 !important;
+   width: 100%;
+   max-width: 289px;
+}
+
+.form-control {
+   display: block;
+   width: 100%;
+   padding: 0.7375rem 0.75rem;
+   font-size: 0.875rem;
+   font-weight: 400;
+   line-height: 1.4285714286;
+   color: inherit;
+   background-color: #fdfdfd;
+   background-clip: padding-box;
+   border: 1px solid #d9dbde;
+   appearance: none;
+   border-radius: 34px;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+button.btn.btn-primary.w-100 {
+   background: transparent;
+   color: #fff;
+   padding: 11px;
+   border-radius: 30px;
+   border: 1px solid #fff;
+}
+label.form-label {
+   color: #fff;
+}
+a {
+   color: #73fff9 !important;
+   text-decoration: none;
+}
+
+body {
+   background: #1c2e63;
+   background: linear-gradient(360deg, #1c2e63 65%, #3a5693 65%);
+}
+
+button.btn.btn-primary.w-100 {
+   background: #fdc95c;
+   color: #1c2e63;
+   padding: 11px;
+   border-radius: 30px;
+}
