@@ -4,18 +4,22 @@
    border: 0;
    background: transparent;
 }
+
 .flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
    width: 525px;
    background: transparent;
    margin: 0px auto !important;
 }
+
 .col-md-5 {
    margin: 0 !important;
    width: 100%;
 }
+
 h2.card-header.text-center.mb-4 {
    display: none;
 }
+
 .flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
    min-height: 711px;
    width: 525px;
@@ -27,6 +31,7 @@ h2.card-header.text-center.mb-4 {
    margin: 0px auto !important;
    height: 100% !important;
 }
+
 span.glpi-logo.mb-4 {
    margin: 0 !important;
 }
@@ -60,6 +65,7 @@ button.btn.btn-primary.w-100 {
    color: #6a696982;
    top: 42px;
 }
+
 .mb-4 label.form-label:before {
    font-family: "Font Awesome 5 Free";
    font-weight: 900;
@@ -91,6 +97,7 @@ button.btn.btn-primary.w-100 {
    border-radius: 34px;
    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 button.btn.btn-primary.w-100 {
    background: transparent;
    color: #fff;
@@ -98,9 +105,11 @@ button.btn.btn-primary.w-100 {
    border-radius: 30px;
    border: 1px solid #fff;
 }
+
 label.form-label {
    color: #fff;
 }
+
 a {
    color: #73fff9 !important;
    text-decoration: none;

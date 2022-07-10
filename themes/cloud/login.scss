@@ -2,78 +2,131 @@
 
 $custom-color: #2b2b2b !default;
 
-#boxlogin input:-webkit-autofill {
-   box-shadow: 0 0 0px 1000px #fff inset;
-}
-#boxlogin input[type="text"],
-#boxlogin select,
-#boxlogin input[type="password"] {
-   width: 100%;
-   height: auto;
-   display: block;
-   border: none !important;
-   padding: 10px 10px 10px 10px;
-   font-size: 1.4em;
-   border-radius: 0;
-   box-sizing: border-box;
-   border: 0 !important;
-   border-bottom: 1px solid #ccc !important;
+.card {
+   border: 0;
    background: transparent;
 }
-#boxlogin #login_input_name:before {
-   color: #0000006b;
-   position: absolute;
-   left: inherit;
-   right: 11px !important;
-   top: 9px;
-   font-size: 19px;
-}
-#boxlogin #login_input_password:before {
-   color: #0000006b;
-   position: absolute;
-   left: inherit;
-   right: 11px !important;
-   top: 9px;
-   font-size: 19px;
-}
-#boxlogin input.submit {
-   margin-top: 20px;
+
+.col-md-5 {
+   margin: 0 !important;
    width: 100%;
-   height: auto;
-   font-size: 1.3em;
-   padding: 14px;
-   color: #fff;
-   background: $custom-color;
-   border-radius: 100px;
 }
 
-h1#logo_login {
-   margin-bottom: 0;
-   padding-bottom: 0;
+h2.card-header.text-center.mb-4 {
+   display: none;
 }
 
-#boxlogin #forget {
-   margin-top: 50px;
-   color: #354445;
-   width: 100%;
-   display: block;
-   text-align: center;
-   text-decoration: underline;
-   font-size: 14px;
+span.glpi-logo.mb-4 {
+   margin: 0 !important;
 }
 
-#display-login,
-#text-login {
-   position: absolute;
-   top: 0;
+button.btn.btn-primary.w-100 {
+   color: #ffffff;
+   padding: 11px;
+   border-radius: 30px;
+   background: #000;
 }
 
-.login_wrapper {
-   background: #ffffff;
-   width: 317px;
-   margin: 102px auto;
-   padding-bottom: 20px;
+.btn-primary,
+.btn-outline-primary,
+.btn-ghost-primary {
+   --tblr-btn-color: #71090e;
+   --tblr-btn-color-interactive: #8d0a10;
+   --tblr-btn-color-text: #1e293b;
+}
+
+.mb-3,
+.mb-4 {
    position: relative;
-   box-shadow: 0px 1px 25px -1px #00000063;
-   border-radius: 6px;
+}
+
+.mb-3 label.form-label:before {
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   content: "\f007";
+   position: absolute;
+   right: 20px;
+   color: #6a696982;
+   top: 42px;
+}
+
+.mb-4 label.form-label:before {
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   content: "\f023";
+   position: absolute;
+   right: 20px;
+   color: #6a696982;
+   top: 42px;
+}
+
+.col-md-5 {
+   margin: 0 !important;
+   width: 100%;
+   max-width: 289px;
+}
+
+button.btn.btn-primary.w-100 {
+   background: transparent;
+   color: #fff;
+   padding: 11px;
+   border-radius: 30px;
+   border: 1px solid #fff;
+}
+
+label.form-label {
+   color: #a6abb1;
+}
+
+.card-body {
+   padding: 0px !important;
+   margin: auto;
+}
+
+button.btn.btn-primary.w-100 {
+   color: #ffffff;
+   padding: 11px;
+   border-radius: 30px;
+   background: #000;
+}
+
+.flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
+   width: 383px;
+   background: #ffffff;
+   border-radius: 30px;
+   margin: 114px auto !important;
+   outline-offset: 0;
+   box-shadow: 0px 6px 13px 1px #00000047;
+}
+
+button.btn.btn-primary.w-100 {
+   color: #ffffff;
+   padding: 11px;
+   border-radius: 30px;
+   background: #000;
+}
+
+a {
+   color: #000000 !important;
+   text-decoration: underline;
+}
+
+.form-control {
+   display: block;
+   width: 100%;
+   min-width: 250px;
+   padding: 0.7375rem 0.75rem;
+   font-size: 0.875rem;
+   font-weight: 400;
+   line-height: 1.4285714286;
+   color: inherit;
+   background-color: #fdfdfd;
+   background-clip: padding-box;
+   border: 0;
+   appearance: none;
+   border-radius: 34px;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+   background: #fff;
+   border-radius: 0;
+   border-bottom: 1px solid;
 }

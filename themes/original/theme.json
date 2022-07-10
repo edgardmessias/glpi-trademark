@@ -1,6 +1,6 @@
 {
-    "name": "Original",
-    "description": "Original Theme",
+    "name": "GLPI 9.5",
+    "description": "GLPI 9.5 Theme",
     "variables": {
         "custom-color": {
             "name": "Cor dos Botões",

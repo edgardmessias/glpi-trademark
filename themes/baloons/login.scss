@@ -21,7 +21,7 @@ span.glpi-logo.mb-4 {
 }
 
 button.btn.btn-primary.w-100 {
-   background: #BA0C16;
+   background: #ba0c16;
    color: #fff;
    padding: 11px;
    border-radius: 30px;
@@ -66,7 +66,6 @@ button.btn.btn-primary.w-100 {
    max-width: 289px;
 }
 
-
 button.btn.btn-primary.w-100 {
    background: transparent;
    color: #fff;
@@ -101,7 +100,13 @@ button.btn.btn-primary.w-100 {
    padding: 11px;
    border-radius: 30px;
    background: rgb(89, 58, 144);
-   background: linear-gradient(0deg, rgba(89, 58, 144, 1) 0%, rgba(117, 81, 181, 1) 48%, rgba(108, 72, 171, 1) 100%, rgba(149, 117, 205, 1) 100%);
+   background: linear-gradient(
+      0deg,
+      rgba(89, 58, 144, 1) 0%,
+      rgba(117, 81, 181, 1) 48%,
+      rgba(108, 72, 171, 1) 100%,
+      rgba(149, 117, 205, 1) 100%
+   );
 }
 
 a {
@@ -123,7 +128,8 @@ a {
    appearance: none;
    border-radius: 34px;
    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-   background: linear-gradient(0deg, #E6EEF8, #E6EEF8), #CFD8DC;
-   box-shadow: inset -4px -4px 12px rgb(253 255 255 / 80%), inset 4px 4px 12px rgb(187 195 206 / 60%);
+   background: linear-gradient(0deg, #e6eef8, #e6eef8), #cfd8dc;
+   box-shadow: inset -4px -4px 12px rgb(253 255 255 / 80%),
+      inset 4px 4px 12px rgb(187 195 206 / 60%);
    border-radius: 16px;
 }
