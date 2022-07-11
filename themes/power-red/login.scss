@@ -27,10 +27,10 @@ h2.card-header.text-center.mb-4 {
    width: 525px;
    background: rgb(255 255 255 / 90%);
    border-radius: 0;
-   box-shadow: 0 4px 30pxrgba (0, 0, 0, 0.1);
+   box-shadow: 0 4px 30pxrgba(0, 0, 0, 0.1);
    backdrop-filter: blur(5px);
    -webkit-backdrop-filter: blur(5px);
-   border: 1pxsolidrgba (255, 255, 255, 0.3);
+   border: 1pxsolidrgba(255, 255, 255, 0.3);
    margin: 0px auto !important;
    height: 100% !important;
 }
@@ -91,4 +91,9 @@ button.btn.btn-primary.w-100 {
 .card {
    border: 0 none;
    box-shadow: none !important;
+}
+
+label.form-label {
+   display: none;
+   color: #fff;
 }

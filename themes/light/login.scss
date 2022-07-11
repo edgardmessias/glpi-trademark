@@ -80,7 +80,7 @@ label.form-label {
    border-radius: 30px;
    margin: 0;
    outline-offset: 0;
-   height: auto;
+   height: 100% !important;
    border-radius: 0;
    padding-bottom: 10px !important;
    width: 320px;
@@ -110,4 +110,9 @@ a {
    background: #fff;
    border-radius: 0;
    border-bottom: 1px solid;
+}
+
+label.form-label {
+   display: none;
+   color: #fff;
 }

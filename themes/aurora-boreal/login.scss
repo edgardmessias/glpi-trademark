@@ -27,9 +27,9 @@ h2.card-header.text-center.mb-4 {
    width: 525px;
    background: transparent;
    border-radius: 0;
-   box-shadow: 0 4px 30px rgba (0, 0, 0, 0.1);
+   box-shadow: 0 4px 30pxrgba(0, 0, 0, 0.1);
    -webkit-backdrop-filter: blur(5px);
-   border: 1pxsolidrgba (255, 255, 255, 0.3);
+   border: 1pxsolidrgba(255, 255, 255, 0.3);
    margin: 0px auto !important;
    height: 100% !important;
 }
@@ -39,7 +39,7 @@ span.glpi-logo.mb-4 {
 }
 
 button.btn.btn-primary.w-100 {
-   background: #ba0c16;
+   background: #BA0C16;
    color: #fff;
    padding: 11px;
    border-radius: 30px;
@@ -123,4 +123,9 @@ label.form-label {
 a {
    color: #73fff9 !important;
    text-decoration: none;
+}
+
+label.form-label {
+   display: none;
+   color: #fff;
 }

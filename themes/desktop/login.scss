@@ -98,7 +98,7 @@ button.btn.btn-primary.w-100 {
    outline-offset: 0;
    box-shadow: 0px 6px 13px 1px #00000047;
    left: 0;
-   height: auto;
+   height: 100% !important;
    top: -32px;
    border-radius: 0;
    position: relative;
@@ -136,4 +136,9 @@ a {
    background: #fff;
    border-radius: 0;
    border-bottom: 1px solid;
+}
+
+label.form-label {
+   display: none;
+   color: #fff;
 }

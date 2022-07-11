@@ -97,7 +97,7 @@ button.btn.btn-primary.w-100 {
    margin: 0;
    outline-offset: 0;
    box-shadow: 0px 6px 13px 1px #00000047;
-   height: auto;
+   height: 100% !important;
    top: -32px;
    border-radius: 0;
    right: 1px !important;
@@ -105,10 +105,10 @@ button.btn.btn-primary.w-100 {
    padding-top: 130px !important;
    padding-bottom: 110px !important;
    background: rgb(0 0 0 / 38%);
-   box-shadow: 0 4px 30pxrgba (0, 0, 0, 0.1);
+   box-shadow: 0 4px 30pxrgba(0, 0, 0, 0.1);
    backdrop-filter: blur(5px);
    -webkit-backdrop-filter: blur(5px);
-   border: 1pxsolidrgba (255, 255, 255, 0.3);
+   border: 1pxsolidrgba(255, 255, 255, 0.3);
 }
 
 button.btn.btn-primary.w-100 {
@@ -138,4 +138,9 @@ a {
    background: #ffffff05;
    border-radius: 0;
    border-bottom: 1px solid #fff;
+}
+
+label.form-label {
+   display: none;
+   color: #fff;
 }
