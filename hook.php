@@ -13,7 +13,7 @@ function plugin_trademark_display_login() {
 
    $loginPicture = PluginTrademarkConfig::getConfig('login_picture');
 
-   if (!$loginPicture && $themeInfo && $themeInfo['login-background']) {
+   if (!$loginPicture && $themeInfo && isset($themeInfo['login-background'])) {
       $loginPicture = $themeInfo['login-logo'] . '&theme=' . $themeInfo['id'];
    }
 
@@ -59,6 +59,7 @@ function plugin_trademark_display_login() {
    <script type="text/javascript">
       $('#login_name').attr('placeholder', <?php echo json_encode(__('Login')) ?>);
       $('input[type=password]').attr('placeholder', <?php echo json_encode(__('Password')) ?>);
+      $('input[type=password]').after($('.form-label-description'));
    <?php
    $favicon = PluginTrademarkConfig::getConfig('favicon_picture');
    if ($favicon) :
