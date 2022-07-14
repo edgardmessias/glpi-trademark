@@ -421,7 +421,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          ])
       );
 
-      echo '<option value="">' . __('Original') . '</option>';
+      echo '<option value="">GLPI 10 (' . __('Original') . ')</option>';
       foreach (PluginTrademarkTheme::getLoginThemes() as $id => $theme) {
          $attrs = [
             'name' => 'login_theme',
