@@ -40,24 +40,24 @@ button.btn.btn-primary.w-100 {
    position: relative;
 }
 
-.mb-3 label.form-label:before {
+.mb-3:after {
    font-family: "Font Awesome 5 Free";
    font-weight: 900;
    content: "\f007";
    position: absolute;
    right: 20px;
    color: #6a696982;
-   top: 42px;
+   top: 12px;
 }
 
-.mb-4 label.form-label:before {
+.mb-4:before {
    font-family: "Font Awesome 5 Free";
    font-weight: 900;
    content: "\f023";
    position: absolute;
    right: 20px;
    color: #6a696982;
-   top: 42px;
+   top: 12px;
 }
 
 .col-md-5 {
@@ -65,6 +65,7 @@ button.btn.btn-primary.w-100 {
    width: 100%;
    max-width: 289px;
 }
+
 
 button.btn.btn-primary.w-100 {
    background: transparent;
@@ -131,4 +132,12 @@ a {
 label.form-label {
    display: none;
    color: #fff;
+}
+
+span.form-label-description {
+   margin-top: 10px;
+   margin-bottom: 10px;
+   text-align: left;
+   width: 100%;
+   display: block;
 }
