@@ -2,54 +2,48 @@
 
 class PluginTrademarkScss {
 
-   static function getNamespace() {
-      $namespace = 'ScssPhp\ScssPhp';
-      $compiler = "$namespace\Compiler";
-
-      if (!class_exists($compiler)) {
-         $namespace = 'Leafo\ScssPhp';
-         $compiler = "$namespace\Compiler";
-      }
-      if (!class_exists($compiler)) {
-         return false;
-      }
-
-      return $namespace;
-   }
-
    static function hasScssSuport() {
-      $namespace = static::getNamespace();
-      return !empty($namespace);
+      return true;
    }
 
    static function compileScss($content, $variables = []) {
       global $GLPI_CACHE;
 
-      $namespace = static::getNamespace();
-
-      if (!$namespace) {
-         return '';
-      }
-
-      $compiler = "$namespace\Compiler";
-
-      /** @var ScssPhp\ScssPhp\Compiler */
-      $scss = new $compiler();
-      if (method_exists($scss, 'setOutputStyle')) {
-         $scss->setOutputStyle("compressed");
-      } else {
-         $scss->setFormatter("$namespace\Formatter\Crunched");
-      }
+      $scss = new \ScssPhp\ScssPhp\Compiler();
+      $scss->setOutputStyle("compressed");
+      $scss->setSourceMap(\ScssPhp\ScssPhp\Compiler::SOURCE_MAP_NONE);
+      $scss->addVariables($variables);
       $scss->addImportPath(GLPI_ROOT);
 
-      $scss->setVariables($variables);
+      $scss->addImportPath(
+         function ($path) {
+            $file_chunks = [];
+            if (!preg_match('/^~@?(?<directory>.*)\/(?<file>[^\/]+)(?:(\.scss)?)/', $path, $file_chunks)) {
+               return null;
+            }
+
+            $possible_filenames = [
+               sprintf('%s/css/lib/%s/%s.scss', GLPI_ROOT, $file_chunks['directory'], $file_chunks['file']),
+               sprintf('%s/css/lib/%s/_%s.scss', GLPI_ROOT, $file_chunks['directory'], $file_chunks['file']),
+            ];
+            foreach ($possible_filenames as $filename) {
+               if (file_exists($filename)) {
+                  return $filename;
+               }
+            }
+
+            return null;
+         }
+      );
+
+      $content = str_replace('\"', '"', $content);
 
       $ckey = md5($content . json_encode($variables));
 
       if ($GLPI_CACHE->has($ckey) && !isset($_GET['reload']) && !isset($_GET['nocache'])) {
          $css = $GLPI_CACHE->get($ckey);
       } else {
-         $css = $scss->compile($content);
+         $css = $scss->compileString($content, GLPI_ROOT . '/trademark.scss')->getCss();
          if (!isset($_GET['nocache'])) {
             $GLPI_CACHE->set($ckey, $css);
          }

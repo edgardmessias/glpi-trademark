@@ -39,43 +39,45 @@ if (false) {
    ?><script>
    <?php
 }
-
-echo "$(function () {";
-$favicon = PluginTrademarkConfig::getConfig('favicon_picture');
-if ($favicon) :
-   $faviconUrl = PluginTrademarkToolbox::getPictureUrl($favicon);
-   ?>
+?>
+      <?php echo "$(function () {"; ?>
+      $('link[href*="trademark/front/internal.css.php"]').appendTo($('head'))
+      <?php
+      $favicon = PluginTrademarkConfig::getConfig('favicon_picture');
+      if ($favicon) :
+         $faviconUrl = PluginTrademarkToolbox::getPictureUrl($favicon);
+         ?>
          var $icon = $('link[rel*=icon]');
          $icon.attr('type', null);
          $icon.attr('href', <?php echo json_encode($faviconUrl) ?>);
-   <?php
-   endif;
-$pageTitle = PluginTrademarkConfig::getConfig('page_title');
-if ($pageTitle) :
-   ?>
+         <?php
+      endif;
+      $pageTitle = PluginTrademarkConfig::getConfig('page_title');
+      if ($pageTitle) :
+         ?>
          var $title = $('title');
          var newTitle = $title.text().replace('GLPI', <?php echo json_encode($pageTitle) ?>);
          $title.text(newTitle);
-   <?php
-   endif;
+         <?php
+      endif;
 
-$footerDisplay = PluginTrademarkConfig::getConfig('page_footer_display', 'original');
-$footerText = PluginTrademarkConfig::getConfig('page_footer_text', '');
-if ($footerDisplay === 'hide') :
-   ?>
+      $footerDisplay = PluginTrademarkConfig::getConfig('page_footer_display', 'original');
+      $footerText = PluginTrademarkConfig::getConfig('page_footer_text', '');
+      if ($footerDisplay === 'hide') :
+         ?>
          $('a[id^=show_about_modal_]').hide();
-   <?php
-   endif;
-if ($footerDisplay === 'custom') :
-   $footerText = \Glpi\RichText\RichText::getEnhancedHtml($footerText);
-   ?>
+         <?php
+      endif;
+      if ($footerDisplay === 'custom') :
+         $footerText = \Glpi\RichText\RichText::getEnhancedHtml($footerText);
+         ?>
          $('div[id^=about_modal_] .copyright').parent().parent().html(<?php echo json_encode($footerText) ?>);
-   <?php
-   endif;
+         <?php
+      endif;
 
-echo "});";
-if (false) {
-   ?>
+      echo "});";
+      if (false) {
+         ?>
    </script>
-   <?php
-}
+         <?php
+      }
