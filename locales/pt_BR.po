@@ -20,7 +20,7 @@ msgstr ""
 
 #: inc/config.class.php:27 setup.php:53
 msgid "Trademark"
-msgstr "Marca Comercial"
+msgstr "Trademark"
 
 #: inc/config.class.php:105
 #, php-format
