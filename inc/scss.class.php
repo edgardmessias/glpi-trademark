@@ -104,6 +104,8 @@ class PluginTrademarkScss {
             $css_custom = "@import '" . $scssPath . "';\n" . $css_custom;
          }
 
+         $variables['trademark_timestamp'] = PluginTrademarkToolbox::getTimestamp();
+
          try {
             $css .= PluginTrademarkScss::compileScss($css_custom, $variables);
          } catch (\Throwable $th) {

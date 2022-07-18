@@ -101,7 +101,10 @@ class PluginTrademarkConfig extends CommonDBTM {
 
          if ($input[$type] === 'scss' && PluginTrademarkScss::hasScssSuport()) {
             try {
-               PluginTrademarkScss::compileScss($input[$fullName]);
+               $variables = [];
+               $variables['trademark_timestamp'] = PluginTrademarkToolbox::getTimestamp();
+
+               PluginTrademarkScss::compileScss($input[$fullName], $variables);
             } catch (\Throwable $th) {
                $message = sprintf(t_trademark('Unable to compile the SCSS (%1$s). Message: '), $label);
                Session::addMessageAfterRedirect($message . $th->getMessage(), true, ERROR);

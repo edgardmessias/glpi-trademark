@@ -45,7 +45,10 @@ $css_custom = html_entity_decode($css_custom);
 
 if ($css_type === 'scss' && $css_custom && PluginTrademarkScss::hasScssSuport()) {
    try {
-      $css .= PluginTrademarkScss::compileScss($css_custom);
+      $variables = [];
+      $variables['trademark_timestamp'] = PluginTrademarkToolbox::getTimestamp();
+
+      $css .= PluginTrademarkScss::compileScss($css_custom, $variables);
    } catch (\Throwable $th) {
       \Glpi\Application\ErrorHandler::getInstance()->handleException($th);
    }
