@@ -107,7 +107,7 @@ class PluginTrademarkScss {
          try {
             $css .= PluginTrademarkScss::compileScss($css_custom, $variables);
          } catch (\Throwable $th) {
-            Toolbox::logWarning($th->getMessage());
+            \Glpi\Application\ErrorHandler::getInstance()->handleException($th);
          }
       } else {
          if ($themeInfo && $themeInfo['login-css']) {

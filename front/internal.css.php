@@ -47,7 +47,7 @@ if ($css_type === 'scss' && $css_custom && PluginTrademarkScss::hasScssSuport())
    try {
       $css .= PluginTrademarkScss::compileScss($css_custom);
    } catch (\Throwable $th) {
-      Toolbox::logWarning($th->getMessage());
+      \Glpi\Application\ErrorHandler::getInstance()->handleException($th);
    }
 } else if ($css_type === 'css') {
    $css .= $css_custom;
