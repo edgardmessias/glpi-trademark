@@ -2,7 +2,7 @@
 
 $custom-color: #ba0c16 !default;
 
-.card {
+body .card {
    border: 0;
    background: transparent;
 }
@@ -55,7 +55,7 @@ button.btn.btn-primary.w-100 {
    --tblr-btn-color-text: #1e293b;
 }
 
-.form-control:focus {
+body .form-control:focus {
    color: inherit;
    background-color: #fdfdfd;
    border-color: #b90e16;
@@ -88,7 +88,7 @@ button.btn.btn-primary.w-100 {
    top: 36px;
 }
 
-.card {
+body .card {
    border: 0 none;
    box-shadow: none !important;
 }

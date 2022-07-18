@@ -2,7 +2,7 @@
 
 $custom-color: #fff !default;
 
-.card {
+body .card {
    border: 0;
    background: transparent;
 }
@@ -53,7 +53,7 @@ button.btn.btn-primary.w-100 {
    --tblr-btn-color-text: #1e293b;
 }
 
-.form-control:focus {
+body .form-control:focus {
    color: inherit;
    background-color: #fdfdfd;
    border-color: #b90e16;
@@ -92,7 +92,7 @@ button.btn.btn-primary.w-100 {
    max-width: 289px;
 }
 
-.form-control {
+body .form-control {
    display: block;
    width: 100%;
    padding: 0.7375rem 0.75rem;
@@ -118,14 +118,10 @@ button.btn.btn-primary.w-100 {
 
 label.form-label {
    color: #fff;
+   display: none;
 }
 
 a {
    color: #73fff9 !important;
    text-decoration: none;
-}
-
-label.form-label {
-   display: none;
-   color: #fff;
 }

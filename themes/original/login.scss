@@ -1,6 +1,6 @@
 /*Tema 10 - Original*/
 
-.card {
+body .card {
    border: 0;
    background: transparent;
 }
@@ -82,7 +82,7 @@ button.btn.btn-primary.w-100 {
    max-width: 289px;
 }
 
-.form-control {
+body .form-control {
    display: block;
    width: 100%;
    padding: 0.7375rem 0.75rem;
@@ -108,6 +108,7 @@ button.btn.btn-primary.w-100 {
 
 label.form-label {
    color: #fff;
+   display: none;
 }
 
 a {
@@ -125,11 +126,6 @@ button.btn.btn-primary.w-100 {
    color: #1c2e63;
    padding: 11px;
    border-radius: 30px;
-}
-
-label.form-label {
-   display: none;
-   color: #fff;
 }
 
 span.form-label-description {

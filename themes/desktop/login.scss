@@ -2,7 +2,7 @@
 
 $custom-color: #354445 !default;
 
-.card {
+body .card {
    border: 0;
    background: transparent;
 }
@@ -76,6 +76,7 @@ button.btn.btn-primary.w-100 {
 
 label.form-label {
    color: #a6abb1;
+   display: none;
 }
 
 .card-body {
@@ -118,7 +119,7 @@ a {
    text-decoration: underline;
 }
 
-.form-control {
+body .form-control {
    display: block;
    width: 100%;
    min-width: 250px;
@@ -136,11 +137,6 @@ a {
    background: #fff;
    border-radius: 0;
    border-bottom: 1px solid;
-}
-
-label.form-label {
-   display: none;
-   color: #fff;
 }
 
 span.form-label-description {

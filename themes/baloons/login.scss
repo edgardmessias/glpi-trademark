@@ -2,7 +2,7 @@
 
 $custom-color: #2b2b2b !default;
 
-.card {
+body .card {
    border: 0;
    background: transparent;
 }
@@ -77,6 +77,7 @@ button.btn.btn-primary.w-100 {
 
 label.form-label {
    color: #a6abb1;
+   display: none;
 }
 
 button.btn.btn-primary.w-100 {
@@ -110,7 +111,7 @@ a {
    text-decoration: none;
 }
 
-.form-control {
+body .form-control {
    display: block;
    width: 100%;
    padding: 0.7375rem 0.75rem;
@@ -127,11 +128,6 @@ a {
    background: linear-gradient(0deg, #E6EEF8, #E6EEF8), #CFD8DC;
    box-shadow: inset -4px -4px 12px rgb(253 255 255 / 80%), inset 4px 4px 12px rgb(187 195 206 / 60%);
    border-radius: 16px;
-}
-
-label.form-label {
-   display: none;
-   color: #fff;
 }
 
 span.form-label-description {
