@@ -116,12 +116,18 @@ button.btn.btn-primary.w-100 {
    border: 1px solid #fff;
 }
 
-label.form-label {
-   color: #fff;
-   display: none;
-}
-
 a {
    color: #73fff9 !important;
    text-decoration: none;
+}
+
+label.form-label {
+   display: none;
+   color: #fff;
+}
+
+.card-body {
+   margin: 0 auto;
+   width: 350px;
+   max-width: 100%;
 }

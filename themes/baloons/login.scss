@@ -75,11 +75,6 @@ button.btn.btn-primary.w-100 {
    border: 1px solid #fff;
 }
 
-label.form-label {
-   color: #a6abb1;
-   display: none;
-}
-
 button.btn.btn-primary.w-100 {
    background: #fdc95c;
    color: #1c2e63;
@@ -130,10 +125,21 @@ body .form-control {
    border-radius: 16px;
 }
 
+label.form-label {
+   display: none;
+   color: #fff;
+}
+
 span.form-label-description {
    margin-top: 10px;
    margin-bottom: 10px;
    text-align: left;
    width: 100%;
    display: block;
+}
+
+.card-body {
+   margin: 0 auto;
+   width: 350px;
+   max-width: 100%;
 }

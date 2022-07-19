@@ -75,7 +75,7 @@ body .form-control:focus {
    position: absolute;
    right: 20px;
    color: #6a6969;
-   top: 36px;
+   top: 10px;
 }
 
 .mb-4:before {
@@ -85,7 +85,7 @@ body .form-control:focus {
    position: absolute;
    right: 20px;
    color: #6a6969;
-   top: 36px;
+   top: 10px;
 }
 
 body .card {
@@ -104,4 +104,10 @@ span.form-label-description {
    text-align: left;
    width: 100%;
    display: block;
+}
+
+.card-body {
+   margin: 0 auto;
+   width: 350px;
+   max-width: 100%;
 }
