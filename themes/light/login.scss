@@ -66,12 +66,14 @@ button.btn.btn-primary.w-100 {
    background: #013453;
 }
 
+label.form-label {
+   color: #023454;
+}
+
 .card-body {
    padding: 0px !important;
    margin: auto;
 }
-
-
 
 .flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
    background: transparent;
@@ -84,7 +86,6 @@ button.btn.btn-primary.w-100 {
    width: 320px;
    margin: 0 auto;
 }
-
 
 a {
    color: #000000 !important;
@@ -110,12 +111,10 @@ body .form-control {
    border-radius: 0;
    border-bottom: 1px solid;
 }
-
 label.form-label {
    display: none;
    color: #fff;
 }
-
 span.form-label-description {
    margin-top: 10px;
    margin-bottom: 10px;
@@ -123,9 +122,15 @@ span.form-label-description {
    width: 100%;
    display: block;
 }
-
 .card-body {
    margin: 0 auto;
    width: 350px;
    max-width: 100%;
+}
+.form-control:focus {
+   color: inherit;
+   background-color: #fdfdfd;
+   border-color: #013453;
+   outline: 0;
+   box-shadow: 0 0 0 0.25rem #0133533b;
 }
