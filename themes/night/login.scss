@@ -1,6 +1,7 @@
 /*Tema 4 - Night*/
 
-$custom-color: #fff !default;
+$btn-background-color: #ffffff !default;
+$btn-foreground-color: #000000 !default;
 
 body .card {
    border: 0;
@@ -18,13 +19,6 @@ h2.card-header.text-center.mb-4 {
 
 span.glpi-logo.mb-4 {
    margin: 0 !important;
-}
-
-button.btn.btn-primary.w-100 {
-   color: #ffffff;
-   padding: 11px;
-   border-radius: 30px;
-   background: #000;
 }
 
 .btn-primary,
@@ -66,14 +60,6 @@ button.btn.btn-primary.w-100 {
    max-width: 289px;
 }
 
-button.btn.btn-primary.w-100 {
-   background: transparent;
-   color: #fff;
-   padding: 11px;
-   border-radius: 30px;
-   border: 1px solid #fff;
-}
-
 label.form-label {
    color: #fff;
 }
@@ -81,13 +67,6 @@ label.form-label {
 .card-body {
    padding: 0px !important;
    margin: auto;
-}
-
-button.btn.btn-primary.w-100 {
-   color: #ffffff;
-   padding: 11px;
-   border-radius: 30px;
-   background: #000;
 }
 
 .flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
@@ -112,10 +91,11 @@ button.btn.btn-primary.w-100 {
 }
 
 button.btn.btn-primary.w-100 {
-   color: #000;
+   color: $btn-foreground-color;
    padding: 11px;
    border-radius: 30px;
-   background: #fff;
+   border: 1px solid #fff;
+   background: $btn-background-color;
 }
 
 a {

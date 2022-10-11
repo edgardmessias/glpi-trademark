@@ -1,5 +1,8 @@
 /*Tema 10 - Original*/
 
+$btn-background-color: #fdc95c !default;
+$btn-foreground-color: #1c2e63 !default;
+
 body .card {
    border: 0;
    background: transparent;
@@ -34,13 +37,6 @@ h2.card-header.text-center.mb-4 {
 
 span.glpi-logo.mb-4 {
    margin: 0 !important;
-}
-
-button.btn.btn-primary.w-100 {
-   background: #ba0c16;
-   color: #fff;
-   padding: 11px;
-   border-radius: 30px;
 }
 
 .btn-primary,
@@ -98,14 +94,6 @@ body .form-control {
    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-button.btn.btn-primary.w-100 {
-   background: transparent;
-   color: #fff;
-   padding: 11px;
-   border-radius: 30px;
-   border: 1px solid #fff;
-}
-
 label.form-label {
    color: #fff;
 }
@@ -121,10 +109,11 @@ body {
 }
 
 button.btn.btn-primary.w-100 {
-   background: #fdc95c;
-   color: #1c2e63;
+   background: $btn-background-color;
+   color: $btn-foreground-color;
    padding: 11px;
    border-radius: 30px;
+   border: 1px solid #fff;
 }
 label.form-label {
    display: none;

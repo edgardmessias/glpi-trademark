@@ -1,6 +1,8 @@
 /*Tema 9 - Baloons*/
 
-$custom-color: #2b2b2b !default;
+$btn-background-color1: #593a90 !default;
+$btn-background-color2: #7551b5 !default;
+$btn-foreground-color: #ffffff !default;
 
 body .card {
    border: 0;
@@ -18,13 +20,6 @@ h2.card-header.text-center.mb-4 {
 
 span.glpi-logo.mb-4 {
    margin: 0 !important;
-}
-
-button.btn.btn-primary.w-100 {
-   background: #ba0c16;
-   color: #fff;
-   padding: 11px;
-   border-radius: 30px;
 }
 
 .btn-primary,
@@ -66,23 +61,8 @@ button.btn.btn-primary.w-100 {
    max-width: 289px;
 }
 
-button.btn.btn-primary.w-100 {
-   background: transparent;
-   color: #fff;
-   padding: 11px;
-   border-radius: 30px;
-   border: 1px solid #fff;
-}
-
 label.form-label {
    color: #a6abb1;
-}
-
-button.btn.btn-primary.w-100 {
-   background: #fdc95c;
-   color: #1c2e63;
-   padding: 11px;
-   border-radius: 30px;
 }
 
 .flex-fill.d-flex.flex-column.justify-content-center.py-4.mt-4 {
@@ -97,17 +77,13 @@ button.btn.btn-primary.w-100 {
 }
 
 button.btn.btn-primary.w-100 {
-   color: #ffffff;
+   background: transparent;
+   color: $btn-foreground-color;
    padding: 11px;
    border-radius: 30px;
-   background: rgb(89, 58, 144);
-   background: linear-gradient(
-      0deg,
-      rgba(89, 58, 144, 1) 0%,
-      rgba(117, 81, 181, 1) 48%,
-      rgba(108, 72, 171, 1) 100%,
-      rgba(149, 117, 205, 1) 100%
-   );
+   border: 1px solid #fff;
+   background: $btn-background-color1;
+   background: linear-gradient(0deg, $btn-background-color1 0%, $btn-background-color2 48%, 1 100%);
 }
 
 a {

@@ -2,9 +2,13 @@
     "name": "Neon",
     "description": "Neon Theme",
     "variables": {
-        "custom-color": {
-            "name": "Cor dos Botões",
-            "default": "#e4edee"
+        "btn-background-color": {
+            "name": "Cor de fundo dos Botões",
+            "default": "#000000"
+        },
+        "btn-foreground-color": {
+            "name": "Cor do texto dos Botões",
+            "default": "#ffffff"
         }
     }
 }

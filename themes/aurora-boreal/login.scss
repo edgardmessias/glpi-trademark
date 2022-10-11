@@ -1,6 +1,6 @@
 /*Tema 7 - Aurora Boreal*/
 
-$custom-color: #fff !default;
+$btn-foreground-color: #ffffff !default;
 
 body .card {
    border: 0;
@@ -36,13 +36,6 @@ h2.card-header.text-center.mb-4 {
 
 span.glpi-logo.mb-4 {
    margin: 0 !important;
-}
-
-button.btn.btn-primary.w-100 {
-   background: #ba0c16;
-   color: #fff;
-   padding: 11px;
-   border-radius: 30px;
 }
 
 .btn-primary,
@@ -110,7 +103,7 @@ body .form-control {
 
 button.btn.btn-primary.w-100 {
    background: transparent;
-   color: #fff;
+   color: $btn-foreground-color;
    padding: 11px;
    border-radius: 30px;
    border: 1px solid #fff;

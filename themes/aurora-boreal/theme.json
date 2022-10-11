@@ -2,8 +2,8 @@
     "name": "Aurora Boreal",
     "description": "Aurora Boreal Theme",
     "variables": {
-        "custom-color": {
-            "name": "Cor dos Botões",
+        "btn-foreground-color": {
+            "name": "Cor do texto dos Botões",
             "default": "#ffffff"
         }
     }

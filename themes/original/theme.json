@@ -2,9 +2,13 @@
     "name": "GLPI 9.5",
     "description": "GLPI 9.5 Theme",
     "variables": {
-        "custom-color": {
-            "name": "Cor dos Botões",
-            "default": "#013453"
+        "btn-background-color": {
+            "name": "Cor de fundo dos Botões",
+            "default": "#fdc95c"
+        },
+        "btn-foreground-color": {
+            "name": "Cor do texto dos Botões",
+            "default": "#1c2e63"
         }
     }
 }

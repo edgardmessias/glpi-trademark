@@ -2,9 +2,13 @@
     "name": "Night",
     "description": "Night Theme",
     "variables": {
-        "custom-color": {
-            "name": "Cor dos Botões",
+        "btn-background-color": {
+            "name": "Cor de fundo dos Botões",
             "default": "#ffffff"
+        },
+        "btn-foreground-color": {
+            "name": "Cor do texto dos Botões",
+            "default": "#000000"
         }
     }
 }

@@ -1,6 +1,7 @@
 /*Tema 2 - PowerRed*/
 
-$custom-color: #ba0c16 !default;
+$btn-background-color: #013453 !default;
+$btn-foreground-color: #ffffff !default;
 
 body .card {
    border: 0;
@@ -41,10 +42,10 @@ span.glpi-logo.mb-4 {
 }
 
 button.btn.btn-primary.w-100 {
-   color: #ffffff;
+   color: $btn-foreground-color;
    padding: 11px;
    border-radius: 30px;
-   background: #013453;
+   background: $btn-background-color;
    border: 0;
 }
 
