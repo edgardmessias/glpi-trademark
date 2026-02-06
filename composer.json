@@ -20,7 +20,7 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "platform": {
-            "php": "7.4.0"
+            "php": "8.2.0"
         },
         "sort-packages": true
     }

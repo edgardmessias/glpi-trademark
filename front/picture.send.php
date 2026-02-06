@@ -11,7 +11,7 @@ if (isset($_GET['path'])) {
 }
 
 if (isset($_GET['theme'])) {
-   $fullPath = PluginTrademarkTheme::getThemeFolder() . '/' .  $_GET['theme'] . '/' . $path;
+   $fullPath = PluginTrademarkTheme::getThemePublicFolder() . '/' . $_GET['theme'] . '/' . $path;
 } else {
    $fullPath = $basePath . $path;
 }

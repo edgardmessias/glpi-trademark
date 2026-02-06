@@ -1,12 +1,14 @@
 <?php
 
-define('PLUGIN_TRADEMARK_VERSION', '2.0.2');
+use Glpi\Http\Firewall;
+
+define('PLUGIN_TRADEMARK_VERSION', '3.0.0');
 
 // Minimal GLPI version, inclusive
-define("PLUGIN_TRADEMARK_MIN_GLPI_VERSION", "10.0");
+define("PLUGIN_TRADEMARK_MIN_GLPI_VERSION", "11.0.0");
 
 // Maximum GLPI version, exclusive
-define("PLUGIN_TRADEMARK_MAX_GLPI_VERSION", "10.1");
+define("PLUGIN_TRADEMARK_MAX_GLPI_VERSION", "11.1.0");
 
 
 $folder = basename(dirname(__FILE__));
@@ -39,11 +41,16 @@ function plugin_init_trademark() {
       $PLUGIN_HOOKS['display_login']['trademark'] = "plugin_trademark_display_login";
 
       // Tip Trick to add version in css output
-      $PLUGIN_HOOKS["add_css"]['trademark'] = new PluginTrademarkFileVersion('front/internal.css.php');
-      $PLUGIN_HOOKS["add_javascript"]['trademark'] = new PluginTrademarkFileVersion('front/internal.js.php');
+      // GLPI 11: core uses plugin version for cache busting; use string path
+      $PLUGIN_HOOKS["add_css"]['trademark'] = 'front/internal.css.php';
+      $PLUGIN_HOOKS["add_javascript"]['trademark'] = 'front/internal.js.php';
 
       $CFG_GLPI['javascript']['config']['config'][] = 'codemirror';
       $CFG_GLPI['javascript']['config']['config'][] = 'tinymce';
+
+      // Make the callback page public again.
+      Firewall::addPluginStrategyForLegacyScripts('trademark', '#^/front/login.css.php$#', Firewall::STRATEGY_NO_CHECK);
+      Firewall::addPluginStrategyForLegacyScripts('trademark', '#^/front/picture.send.php$#', Firewall::STRATEGY_NO_CHECK);
    }
 }
 
@@ -67,12 +74,19 @@ function plugin_version_trademark() {
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_trademark_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, PLUGIN_TRADEMARK_MIN_GLPI_VERSION, 'lt')) {
+   if (version_compare(GLPI_VERSION, PLUGIN_TRADEMARK_MIN_GLPI_VERSION, '<')) {
       echo "This plugin requires GLPI >= " . PLUGIN_TRADEMARK_MIN_GLPI_VERSION;
       return false;
-   } else {
-      return true;
    }
+   if (version_compare(GLPI_VERSION, PLUGIN_TRADEMARK_MAX_GLPI_VERSION, '>=')) {
+      echo "This plugin is not yet validated for this GLPI version";
+      return false;
+   }
+   if (version_compare(PHP_VERSION, '8.2', '<')) {
+      echo "This plugin requires PHP >= 8.2";
+      return false;
+   }
+   return true;
 }
 
 function plugin_trademark_check_config() {

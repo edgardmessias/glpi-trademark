@@ -42,8 +42,6 @@ class PluginTrademarkToolbox {
    static function getPictureUrl($path) {
       global $CFG_GLPI;
 
-      $path = Html::cleanInputText($path); // prevent xss
-
       if (empty($path)) {
          return null;
       }

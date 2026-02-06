@@ -2,8 +2,19 @@
 
 class PluginTrademarkTheme {
 
+   /** Theme folder for server-side files (theme.json, login.scss) */
    public static function getThemeFolder() {
       return dirname(__DIR__) . '/themes';
+   }
+
+   /** Public folder for theme assets exposed in URLs (images), per GLPI Firewall */
+   public static function getThemePublicFolder() {
+      return dirname(__DIR__) . '/public/themes';
+   }
+
+   /** Image types served from public/themes; others from themes/ */
+   private static function getThemeImageTypes() {
+      return ['login.background.jpg', 'login.logo.png', 'login.preview.jpg'];
    }
 
    public static function isLoginTheme($dir) {
@@ -12,7 +23,10 @@ class PluginTrademarkTheme {
    }
 
    public static function getThemePath($dir, $type) {
-      $path = static::getThemeFolder() . '/' . $dir . '/' . $type;
+      $folder = in_array($type, static::getThemeImageTypes(), true)
+         ? static::getThemePublicFolder()
+         : static::getThemeFolder();
+      $path = $folder . '/' . $dir . '/' . $type;
       if (!file_exists($path)) {
          return false;
       }
