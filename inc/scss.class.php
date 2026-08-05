@@ -10,9 +10,13 @@ class PluginTrademarkScss {
       global $GLPI_CACHE;
 
       $scss = new \ScssPhp\ScssPhp\Compiler();
-      $scss->setOutputStyle("compressed");
+      $scss->setOutputStyle(\ScssPhp\ScssPhp\OutputStyle::COMPRESSED);
       $scss->setSourceMap(\ScssPhp\ScssPhp\Compiler::SOURCE_MAP_NONE);
-      $scss->addVariables($variables);
+      $convertedVariables = array_map(
+         fn($v) => \ScssPhp\ScssPhp\ValueConverter::fromPhp($v),
+         $variables
+      );
+      $scss->addVariables($convertedVariables);
       $scss->addImportPath(GLPI_ROOT);
 
       $scss->addImportPath(

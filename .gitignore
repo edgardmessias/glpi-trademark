@@ -5,3 +5,4 @@
 /locales/*.mo
 /vendor
 /themes/*/*.css
+.DS_Store
