@@ -24,7 +24,7 @@ class PluginTrademarkConfig extends CommonDBTM {
    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
       switch (get_class($item)) {
          case 'Config':
-            return [1 => t_trademark('Trademark')];
+            return [1 => self::createTabEntry(t_trademark('Trademark'), 0, null, 'ti ti-trademark')];
          default:
             return '';
       }
@@ -183,12 +183,14 @@ class PluginTrademarkConfig extends CommonDBTM {
                background-position: 0 0, 0 5px, 5px -5px, -5px 0px;',
             'class' => 'picture_square'
          ]);
-         echo "&nbsp;";
+         echo "<span class='d-inline-flex align-items-center ms-2'>";
          echo Html::getCheckbox([
+            'id'    => "checkbox_blank_$name",
             'title' => t_trademark('Reset'),
             'name'  => "_blank_$name"
          ]);
-         echo "&nbsp;" . t_trademark('Reset');
+         echo "&nbsp;<label for='checkbox_blank_$name' class='mb-0'>" . t_trademark('Reset') . "</label>";
+         echo "</span>";
          echo '</td>';
          echo '<td colspan="2">';
       } else {
@@ -233,35 +235,36 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo "<td colspan='4' style='max-width: 1000px'>";
       $rand = mt_rand();
 
-      echo sprintf(
-         '<textarea %1$s>',
-         Html::parseAttributes([
-            'id' => $fullName . '_' . $rand,
-            'name' => $fullName,
-            'class' => 'trademark-codemirror',
-         ])
-      );
-      echo rtrim($this->fields[$fullName]);
-      echo str_repeat("\n", 10);
-      echo '</textarea>';
+      $containerId = $fullName . '_' . $rand;
+      $escapedValue = json_encode(rtrim($this->fields[$fullName]));
+
+      echo "<div id='{$containerId}' class='{$fullName}-container trademark-monaco' style='height: 400px; width: 100%; border: 1px solid var(--tblr-border-color);'></div>";
+      echo "<textarea id='textarea_{$containerId}' name='{$fullName}' style='display:none;'></textarea>";
 
       echo Html::scriptBlock('
          $(function() {
-            var textarea = document.getElementById("' . $fullName . '_' . $rand . '");
-            var editorCode = CodeMirror.fromTextArea(textarea, {
-               mode: "text/x-scss",
-               lineNumbers: true,
-               viewportMargin: Infinity,
-               extraKeys: {
-                  "Ctrl-Space": "autocomplete"
-               },
-               foldGutter: true,
-               gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
-            });
-            $("#' . $fullName . '_' . $rand . '").data("CodeMirrorInstance", editorCode);
-
-            // Fix bad display of gutter (see https://github.com/codemirror/CodeMirror/issues/3098 )
-            setTimeout(function () {editorCode.refresh();}, ' . (500 + self::$_i++ * 100) . ');
+            var cssValue = ' . $escapedValue . ';
+            var containerId = "' . $containerId . '";
+            var textareaId = "textarea_" + containerId;
+            $("#" + textareaId).val(cssValue);
+            
+            if (window.GLPI && window.GLPI.Monaco) {
+               window.GLPI.Monaco.createEditor(containerId, "scss", cssValue, [], {
+                  _force_default_lang: true,
+                  readOnly: 0,
+                  minimap: { enabled: false }
+               }).then(function(editor) {
+                  editor.editor.layout();
+                  
+                  editor.editor.onDidChangeModelContent(function() {
+                     $("#" + textareaId).val(editor.editor.getValue());
+                  });
+                  
+                  $("#" + containerId).data("MonacoInstance", editor.editor);
+               });
+            } else {
+               $("#" + textareaId).css("display", "block").css("width", "100%").css("height", "400px");
+            }
          });
       ');
       echo "</td>";
@@ -504,12 +507,14 @@ class PluginTrademarkConfig extends CommonDBTM {
             Html::showColorField($fieldName, [
                'value' => $fieldValue
             ]);
-            echo "&nbsp;";
+            echo "<span class='d-inline-flex align-items-center ms-2'>";
             echo Html::getCheckbox([
+               'id'    => "checkbox_blank_$fieldName",
                'title' => t_trademark('Reset'),
                'name'  => "_blank_$fieldName"
             ]);
-            echo "&nbsp;" . t_trademark('Reset');
+            echo "&nbsp;<label for='checkbox_blank_$fieldName' class='mb-0'>" . t_trademark('Reset') . "</label>";
+            echo "</span>";
             echo "</td>";
             echo "<td></td>";
             echo "<td></td>";
@@ -598,9 +603,12 @@ class PluginTrademarkConfig extends CommonDBTM {
       echo Html::scriptBlock("$('#tabs$rand').tabs({
          activate: function(event, ui) {
             localStorage['trademark_last_tab'] = $('#tabs$rand').tabs('option', 'active');
-            var editor = ui.newPanel.find('.trademark-codemirror').data('CodeMirrorInstance');
-            if (editor) {
-               editor.refresh();
+            var monacoContainer = ui.newPanel.find('.trademark-monaco');
+            if (monacoContainer.length > 0) {
+               var editor = monacoContainer.data('MonacoInstance');
+               if (editor) {
+                  editor.layout();
+               }
             }
          },
          active: localStorage['trademark_last_tab']
@@ -610,7 +618,7 @@ class PluginTrademarkConfig extends CommonDBTM {
          echo "<table class='tab_cadre_fixe'>";
          echo "<tr class='tab_bg_2'>";
          echo "<td colspan='4' class='center'>";
-         echo "<input type='submit' name='update' class='submit' value=\"" . _sx('button', 'Save') . "\">";
+         echo "<button type='submit' name='update' class='btn btn-primary submit' value='1'><i class='ti ti-device-floppy'></i> <span>" . _sx('button', 'Save') . "</span></button>";
          echo "</td></tr>";
          echo "</table>";
       }

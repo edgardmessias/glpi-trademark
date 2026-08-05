@@ -45,7 +45,7 @@ function plugin_init_trademark() {
       $PLUGIN_HOOKS["add_css"]['trademark'] = 'front/internal.css.php';
       $PLUGIN_HOOKS["add_javascript"]['trademark'] = 'front/internal.js.php';
 
-      $CFG_GLPI['javascript']['config']['config'][] = 'codemirror';
+      $CFG_GLPI['javascript']['config']['config'][] = 'monaco';
       $CFG_GLPI['javascript']['config']['config'][] = 'tinymce';
 
       // Make the callback page public again.

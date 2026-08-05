@@ -51,8 +51,8 @@ function plugin_trademark_display_login() {
             content: url(<?php echo $pictureUrl ?>);
             width: auto;
             height: auto;
-            max-width: <?php echo $maxWidth ?>px;
-            max-height: <?php echo $maxHeight ?>px;
+            max-width: <?php echo $maxWidth ?>;
+            max-height: <?php echo $maxHeight ?>;
          }
       </style>
    <?php endif; ?>

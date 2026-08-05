@@ -35,7 +35,7 @@ span.glpi-logo.mb-4 {
    position: relative;
 }
 
-.mb-3:after {
+.mb-3:has(#login_name):after {
    font-family: "Font Awesome 5 Free";
    font-weight: 900;
    content: "\f007";
@@ -45,7 +45,7 @@ span.glpi-logo.mb-4 {
    top: 12px;
 }
 
-.mb-4:before {
+.mb-4:has(#login_password):before {
    font-family: "Font Awesome 5 Free";
    font-weight: 900;
    content: "\f023";
@@ -144,4 +144,9 @@ span.form-label-description {
    border-color: #013453;
    outline: 0;
    box-shadow: 0 0 0 0.25rem #5e5e5e3b;
+}
+
+:root {
+   --tblr-primary: #{$btn-background-color};
+   --tblr-primary-fg: #{$btn-foreground-color};
 }

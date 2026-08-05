@@ -10,9 +10,13 @@ class PluginTrademarkScss {
       global $GLPI_CACHE;
 
       $scss = new \ScssPhp\ScssPhp\Compiler();
-      $scss->setOutputStyle("compressed");
+      $scss->setOutputStyle(\ScssPhp\ScssPhp\OutputStyle::COMPRESSED);
       $scss->setSourceMap(\ScssPhp\ScssPhp\Compiler::SOURCE_MAP_NONE);
-      $scss->addVariables($variables);
+      $varsContent = "";
+      foreach ($variables as $k => $v) {
+         $varsContent .= "\$$k: $v;\n";
+      }
+      $content = $varsContent . $content;
       $scss->addImportPath(GLPI_ROOT);
 
       $scss->addImportPath(
@@ -82,6 +86,8 @@ class PluginTrademarkScss {
          $css .= " background-image: url(\"" . PluginTrademarkToolbox::getPictureUrl($picture) . "\");";
          $css .= "}";
       }
+
+      $css .= " body .card { background-color: transparent; border: none; }";
 
       $css_type = PluginTrademarkConfig::getConfig("login_css_type", 'scss');
       $css_custom = PluginTrademarkConfig::getConfig("login_css_custom", '');
